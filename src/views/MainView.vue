@@ -15,6 +15,7 @@ import { Space as ASpace } from 'ant-design-vue'
   "vue-router": "^4.3.3"
 },
 "devDependencies": {
+  "@iconify/vue": "^4.1.2",
   "@rushstack/eslint-patch": "^1.8.0",
   "@tsconfig/node20": "^20.1.4",
   "@types/node": "^20.14.5",
@@ -25,15 +26,15 @@ import { Space as ASpace } from 'ant-design-vue'
   "@vue/tsconfig": "^0.5.1",
   "eslint": "^8.57.0",
   "eslint-plugin-vue": "^9.23.0",
+  "husky": "^8.0.0",
   "lint-staged": "^15.2.9",
   "npm-run-all2": "^6.2.0",
   "prettier": "^3.2.5",
   "typescript": "~5.4.0",
   "unocss": "^0.62.2",
   "vite": "^5.3.1",
-  "vue-tsc": "^2.0.21",
-  "husky": "^8.0.0"
-}
+  "vue-tsc": "^2.0.21"
+},
     </pre>
   </a-space>
 </template>

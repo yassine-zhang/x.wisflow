@@ -1,6 +1,3 @@
-// import '@unocss/reset/sanitize/sanitize.css'
-// import '@unocss/reset/sanitize/assets.css'
-import 'ant-design-vue/dist/reset.css'
 import './assets/main.css'
 import 'virtual:uno.css'
 
