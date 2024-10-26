@@ -1,7 +1,16 @@
 // uno.config.ts
-import { defineConfig } from 'unocss'
+import { defineConfig, transformerDirectives } from 'unocss'
 import presetUno from '@unocss/preset-uno'
 
 export default defineConfig({
-  presets: [presetUno()]
+  presets: [presetUno()],
+  shortcuts: {},
+  transformers: [
+    transformerDirectives({
+      // the defaults
+      applyVariable: ['--at-apply', '--uno-apply', '--uno']
+      // or disable with:
+      // applyVariable: false
+    })
+  ]
 })

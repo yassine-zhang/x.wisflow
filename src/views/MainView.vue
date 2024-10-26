@@ -1,40 +1,35 @@
 <script setup lang="ts">
-import { Space as ASpace } from 'ant-design-vue'
+import { Space as ASpace, message } from 'ant-design-vue'
+import { ref, onMounted } from 'vue'
+import packageJson from '../../package.json'
+
+const dependenciesString = ref('')
+
+onMounted(() => {
+  message.success('Hello World')
+
+  const formatDependencies = (deps: Record<string, string>) => {
+    return Object.entries(deps)
+      .map(([name, version]) => `  "${name}": "${version}"`)
+      .join(',\n')
+  }
+
+  const dependencies = formatDependencies(packageJson.dependencies)
+  const devDependencies = formatDependencies(packageJson.devDependencies)
+
+  dependenciesString.value = `// package.json
+"dependencies": {
+${dependencies}
+},
+"devDependencies": {
+${devDependencies}
+},`
+})
 </script>
 
 <template>
-  <a-space class="p-3" direction="vertical">
-    <h1 class="font-bold text-xl text-blue-600">MainView Starter Page</h1>
-    <pre class="whitespace-pre-wrap break-words text-xs text-blue-500">
-// package.json
-"dependencies": {
-  "@unocss/reset": "^0.62.2",
-  "ant-design-vue": "4.x",
-  "pinia": "^2.1.7",
-  "vue": "^3.4.29",
-  "vue-router": "^4.3.3"
-},
-"devDependencies": {
-  "@iconify/vue": "^4.1.2",
-  "@rushstack/eslint-patch": "^1.8.0",
-  "@tsconfig/node20": "^20.1.4",
-  "@types/node": "^20.14.5",
-  "@unocss/preset-uno": "^0.62.2",
-  "@vitejs/plugin-vue": "^5.0.5",
-  "@vue/eslint-config-prettier": "^9.0.0",
-  "@vue/eslint-config-typescript": "^13.0.0",
-  "@vue/tsconfig": "^0.5.1",
-  "eslint": "^8.57.0",
-  "eslint-plugin-vue": "^9.23.0",
-  "husky": "^8.0.0",
-  "lint-staged": "^15.2.9",
-  "npm-run-all2": "^6.2.0",
-  "prettier": "^3.2.5",
-  "typescript": "~5.4.0",
-  "unocss": "^0.62.2",
-  "vite": "^5.3.1",
-  "vue-tsc": "^2.0.21"
-},
-    </pre>
+  <a-space class="p-8 <sm:p-3 text-blue-600" direction="vertical">
+    <h1 class="font-bold text-xl">MainView Starter Page</h1>
+    <pre class="whitespace-pre-wrap break-words text-sm font-normal">{{ dependenciesString }}</pre>
   </a-space>
 </template>
