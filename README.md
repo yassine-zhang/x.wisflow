@@ -1,39 +1,54 @@
-# cjw-static
+# 介绍
 
-This template should help get you started developing with Vue 3 in Vite.
+> 这是一个Web通用基础项目模版，包含Vue3、AntDesignVue、Unocss、TypeScript、ESLint、Prettier...
 
-## Recommended IDE Setup
+在线网站：https://typescript-vue3-antd-unocss-starter.vercel.app/
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+# 项目结构
 
-## Type Support for `.vue` Imports in TS
+> 符合代码规范的目录结构
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+```bash
+.
+├── README.md
+├── bun.lockb
+├── components.d.ts
+├── env.d.ts
+├── index.html
+├── package.json
+├── public
+│   └── favicon.ico
+├── src
+│   ├── App.vue
+│   ├── assets
+│   ├── components
+│   ├── main.ts
+│   ├── router
+│   ├── stores
+│   └── views
+├── tsconfig.app.json
+├── tsconfig.json
+├── tsconfig.node.json
+├── uno.config.ts
+└── vite.config.ts
+```
 
-## Customize configuration
+# 如何开始？
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+## 1. 安装依赖
 
-## Project Setup
-
-```sh
+```bash
 bun install
 ```
 
-### Compile and Hot-Reload for Development
+## 2. 运行项目
 
-```sh
+```bash
 bun dev
 ```
 
-### Type-Check, Compile and Minify for Production
+## 3. 打包项目
 
-```sh
-bun build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-bun lint
+```bash
+bun run build
 ```
