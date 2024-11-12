@@ -8,13 +8,17 @@
     "build-only": "vite build",
     "type-check": "vue-tsc --build --force",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
-    "format": "prettier --write src/",
+    "format": "prettier --write ./",
     "prepare": "husky install"
   },
   "dependencies": {
     "@unocss/reset": "^0.62.2",
     "ant-design-vue": "4.x",
+    "axios": "^1.7.7",
+    "dayjs": "^1.11.13",
+    "modern-css-reset": "^1.4.0",
     "pinia": "^2.1.7",
+    "pinia-plugin-persist": "^1.0.0",
     "vue": "^3.4.29",
     "vue-router": "^4.3.3"
   },

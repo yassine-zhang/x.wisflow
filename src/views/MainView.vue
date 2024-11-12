@@ -1,18 +1,18 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
-import packageJson from '../../package.json'
+import { ref, onMounted } from "vue";
+import packageJson from "../../package.json";
 
-const dependenciesString = ref('')
+const dependenciesString = ref("");
 
 onMounted(() => {
   const formatDependencies = (deps: Record<string, string>) => {
     return Object.entries(deps)
       .map(([name, version]) => `  "${name}": "${version}"`)
-      .join(',\n')
-  }
+      .join(",\n");
+  };
 
-  const dependencies = formatDependencies(packageJson.dependencies)
-  const devDependencies = formatDependencies(packageJson.devDependencies)
+  const dependencies = formatDependencies(packageJson.dependencies);
+  const devDependencies = formatDependencies(packageJson.devDependencies);
 
   dependenciesString.value = `// package.json
 "dependencies": {
@@ -20,8 +20,8 @@ ${dependencies}
 },
 "devDependencies": {
 ${devDependencies}
-},`
-})
+},`;
+});
 </script>
 
 <template>
@@ -31,6 +31,8 @@ ${devDependencies}
       <strong>描述：</strong>
       基础Web模版，包含Vue3、AntDesignVue、Unocss、TypeScript、ESLint、Prettier...
     </p>
-    <pre class="whitespace-pre-wrap break-words text-sm font-normal">{{ dependenciesString }}</pre>
+    <pre class="whitespace-pre-wrap break-words text-sm font-normal">{{
+      dependenciesString
+    }}</pre>
   </ant-space>
 </template>

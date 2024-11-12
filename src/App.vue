@@ -5,10 +5,10 @@
     :theme="{
       token: {
         fontFamily:
-          'ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji'
-      }
+          'ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji',
+      },
     }"
   >
-    <RouterView class="gt-standard-mono" />
+    <RouterView class="gt-standard" />
   </ant-config-provider>
 </template>

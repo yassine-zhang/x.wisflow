@@ -1,18 +1,20 @@
-@import url('./css/reset.css');
+@font-face {
+  font-family: "GT Standard Mono";
+  src: url("@/assets/fonts/GT-Standard-Mono-VF-Beta-V1.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "GT Standard";
+  src: url("@/assets/fonts/GT-Standard-VF-Beta-V4.ttf") format("truetype");
+}
 
 .gt-standard-mono {
-  font-family: 'GT Standard Mono', monospace;
+  font-family: "GT Standard Mono", monospace;
 }
 .gt-standard {
-  font-family: 'GT Standard', monospace;
+  font-family: "GT Standard", sans-serif;
 }
 
-@font-face {
-  font-family: 'GT Standard Mono';
-  src: url('@/assets/fonts/GT-Standard-Mono-VF-Beta-V1.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'GT Standard';
-  src: url('@/assets/fonts/GT-Standard-VF-Beta-V4.ttf') format('truetype');
+pre {
+  font-family: "GT Standard Mono", monospace;
 }
