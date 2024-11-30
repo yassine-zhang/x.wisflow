@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
 import packageJson from "../../package.json";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
 const dependenciesString = ref("");
 
@@ -25,14 +26,19 @@ ${devDependencies}
 </script>
 
 <template>
-  <ant-space class="p-8 <sm:p-3 text-black" direction="vertical">
+  <section
+    class="flex flex-col gap-3 p-3 text-black sm:p-8"
+    direction="vertical"
+  >
     <h1 class="font-bold text-xl">MainView Starter Page</h1>
-    <p>
-      <strong>描述：</strong>
-      基础Web模版，包含Vue3、AntDesignVue、Unocss、TypeScript、ESLint、Prettier...
-    </p>
+    <Alert class="w-full sm:w-[60%]">
+      <AlertTitle>描述：</AlertTitle>
+      <AlertDescription>
+        基础Web模版，包含Vue3、Shadcn、Tailwind、TypeScript、ESLint、Prettier...
+      </AlertDescription>
+    </Alert>
     <pre class="whitespace-pre-wrap break-words text-sm font-normal">{{
       dependenciesString
     }}</pre>
-  </ant-space>
+  </section>
 </template>

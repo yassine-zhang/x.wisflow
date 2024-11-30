@@ -1,4 +1,6 @@
-import { message } from "ant-design-vue";
+import { useToast } from "@/components/ui/toast/use-toast";
+
+const { toast } = useToast();
 
 /**
  * 将指定字符串复制到剪贴板，并在复制成功后显示成功消息。
@@ -12,11 +14,17 @@ export function copyTargetString(value: string, copiedMsg: string) {
   navigator.clipboard
     .writeText(value)
     .then(() => {
-      message.success(copiedMsg);
+      toast({
+        title: "复制成功",
+        description: copiedMsg,
+      });
     })
     .catch((error) => {
       console.error("复制失败:", error);
-      message.error("复制失败，请稍后重试");
+      toast({
+        description: "复制失败，请稍后重试",
+        variant: "destructive",
+      });
     });
 }
 

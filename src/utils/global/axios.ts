@@ -1,8 +1,10 @@
 import axios from "axios";
-import { message } from "ant-design-vue";
+import { useToast } from "@/components/ui/toast/use-toast";
+
+const { toast } = useToast();
 
 const instance = axios.create({
-  baseURL: import.meta.env.VITE_API_URL,
+  baseURL: "http://localhost:8080",
   timeout: 5000,
   headers: {
     Authorization: `Bearer ${localStorage.getItem("token") || "Empty token value"}`,
@@ -26,7 +28,11 @@ instance.interceptors.response.use(
           return Promise.resolve(error.response.data);
         default:
           // Other errors
-          message.error(error.message);
+          toast({
+            title: "Network request failed",
+            description: error.message,
+            variant: "destructive",
+          });
           break;
       }
 
@@ -34,12 +40,20 @@ instance.interceptors.response.use(
       return Promise.reject(error);
     } else if (error.request) {
       // The request was made but no response was received
-      message.error(error.message);
+      toast({
+        title: "Network request failed",
+        description: error.message,
+        variant: "destructive",
+      });
       console.error(error.request);
       return Promise.reject(error);
     } else {
       // Something happened in setting up the request that triggered an Error
-      message.error(error.message);
+      toast({
+        title: "Network request failed",
+        description: error.message,
+        variant: "destructive",
+      });
       return Promise.reject(error);
     }
   },

@@ -1,8 +1,6 @@
 # 介绍
 
-> 这是一个Web通用基础项目模版，包含Vue3、AntDesignVue、Unocss、TypeScript、ESLint、Prettier...
-
-在线网站：https://typescript-vue3-antd-unocss-starter.vercel.app/
+> 这是一个Web通用基础项目模版，包含Vue3、Shadcn、Tailwind、TypeScript、ESLint、Prettier...
 
 # 项目结构
 
@@ -13,6 +11,7 @@
 ├── README.md
 ├── bun.lockb
 ├── components.d.ts
+├── components.json
 ├── env.d.ts
 ├── index.html
 ├── package.json
@@ -22,14 +21,17 @@
 │   ├── App.vue
 │   ├── assets
 │   ├── components
+│   ├── lib
 │   ├── main.ts
 │   ├── router
+│   ├── service
 │   ├── stores
+│   ├── utils
 │   └── views
+├── tailwind.config.ts
 ├── tsconfig.app.json
 ├── tsconfig.json
 ├── tsconfig.node.json
-├── uno.config.ts
 └── vite.config.ts
 ```
 
