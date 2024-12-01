@@ -76,3 +76,31 @@
     @apply bg-background text-foreground;
   }
 }
+
+@font-face {
+  font-family: "GT Standard Mono";
+  src: url("@/assets/fonts/GT-Standard-Mono-VF-Beta-V1.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "GT Standard";
+  src: url("@/assets/fonts/GT-Standard-VF-Beta-V4.ttf") format("truetype");
+}
+
+.gt-standard-mono {
+  font-family: "GT Standard Mono", monospace;
+}
+.gt-standard {
+  font-family: "GT Standard", sans-serif;
+}
+
+pre {
+  font-family: "GT Standard Mono", monospace;
+}
+
+.transition-style {
+  @apply transition-colors duration-300 ease-in-out;
+}
+.underline-style {
+  @apply cursor-pointer underline decoration-gray-300 dark:decoration-gray-500 hover:decoration-gray-900 dark:hover:decoration-gray-100 underline-offset-4 transition-style;
+}
