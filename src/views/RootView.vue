@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { Icon } from "@iconify/vue";
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
+import { useMotion } from "@vueuse/motion";
+
+const socialIconsParent = ref<HTMLElement | null>(null);
 
 const profile = ref({
   name: "张永鑫",
@@ -13,6 +16,22 @@ const profile = ref({
     { icon: "mdi:github", color: "text-gray-800 dark:text-gray-200" },
     { icon: "mdi:email", color: "text-red-500" },
   ],
+});
+
+onMounted(() => {
+  if (socialIconsParent.value) {
+    const icons = socialIconsParent.value.querySelectorAll("a");
+    icons.forEach((icon) => {
+      useMotion(icon, {
+        initial: {
+          rotate: 0,
+        },
+        hovered: {
+          rotate: 15,
+        },
+      });
+    });
+  }
 });
 
 const articles = ref([
@@ -79,7 +98,7 @@ const projects = ref([
       <p class="mt-2 text-gray-500 dark:text-gray-300">
         {{ profile.recordDate }}
       </p>
-      <div class="flex gap-2 mt-4">
+      <div ref="socialIconsParent" class="flex gap-2 mt-4">
         <a
           v-for="(icon, index) in profile.socialIcons"
           :key="index"

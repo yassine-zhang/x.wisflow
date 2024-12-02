@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { Icon } from "@iconify/vue";
 
 // 定义数据
 const currentYear = ref(new Date().getFullYear());
@@ -16,12 +15,28 @@ const scrollToTop = () => {
 
 <template>
   <footer class="flex flex-col items-end">
-    <div
-      class="w-8 h-8 border-[1px] border-gray-200 dark:border-gray-700 rounded flex items-center justify-center cursor-pointer transition-style hover:bg-gray-100 dark:hover:bg-gray-800"
+    <button
+      class="flex justify-center group relative w-8 h-8 border-[1px] border-gray-200 dark:border-gray-700 rounded transition-style hover:bg-gray-100 dark:hover:bg-gray-800"
       @click="scrollToTop"
     >
-      <Icon icon="oui:arrow-up" width="16" height="16" />
-    </div>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        class="absolute top-1/2 -translate-y-1/2 size-4 stroke-2 fill-none stroke-current rotate-90"
+      >
+        <line
+          x1="5"
+          y1="12"
+          x2="19"
+          y2="12"
+          class="translate-x-2 group-hover:translate-x-0 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-in-out"
+        ></line>
+        <polyline
+          points="12 5 5 12 12 19"
+          class="translate-x-1 group-hover:translate-x-0 transition-transform duration-300 ease-in-out"
+        ></polyline>
+      </svg>
+    </button>
     <div class="w-full flex justify-between items-center mb-12 mt-6">
       <div class="text-gray-500 dark:text-gray-400">
         © {{ currentYear }} CoolCat
