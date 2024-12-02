@@ -29,15 +29,17 @@ const linkStyles = useLinkStyles();
 
 <template>
   <div class="flex items-center justify-between py-4">
-    <img
-      src="@/assets/images/avatar.jpeg"
-      alt="Profile"
-      class="w-14 h-14 rounded-full"
-    />
+    <router-link to="/">
+      <img
+        src="@/assets/images/avatar.jpeg"
+        alt="Profile"
+        class="w-14 h-14 rounded-full"
+      />
+    </router-link>
     <nav class="flex space-x-4">
-      <a href="#" :class="linkStyles">文章</a>
-      <a href="#" :class="linkStyles">项目</a>
-      <a href="#" :class="linkStyles">关于</a>
+      <router-link to="/blogs" :class="linkStyles">文章</router-link>
+      <router-link to="/projects" :class="linkStyles">项目</router-link>
+      <router-link to="/me" :class="linkStyles">关于</router-link>
       <button
         @click="toggleTheme"
         class="text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white transition-style"

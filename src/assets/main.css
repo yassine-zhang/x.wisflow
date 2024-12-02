@@ -104,3 +104,16 @@ pre {
 .underline-style {
   @apply cursor-pointer underline decoration-gray-300 dark:decoration-gray-500 hover:decoration-gray-900 dark:hover:decoration-gray-100 underline-offset-4 transition-style;
 }
+
+body {
+  height: 100vh; /* 设置为视口高度 */
+  overflow-y: scroll; /* 始终显示滚动条 */
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+html.light {
+  color-scheme: light;
+}

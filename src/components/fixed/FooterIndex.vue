@@ -1,8 +1,13 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, onMounted, onUnmounted, watch } from "vue";
+import { useRoute } from "vue-router";
 
 // 定义数据
 const currentYear = ref(new Date().getFullYear());
+const isButtonVisible = ref(false);
+
+// 获取当前路由
+const route = useRoute();
 
 // 定义滚动到顶部的函数
 const scrollToTop = () => {
@@ -11,11 +16,32 @@ const scrollToTop = () => {
     behavior: "smooth",
   });
 };
+
+// 检查内容高度是否大于窗口高度加上200px
+const checkContentHeight = () => {
+  isButtonVisible.value = document.body.scrollHeight > window.innerHeight + 200;
+};
+
+// 监听窗口大小变化
+onMounted(() => {
+  checkContentHeight();
+  window.addEventListener("resize", checkContentHeight);
+});
+
+onUnmounted(() => {
+  window.removeEventListener("resize", checkContentHeight);
+});
+
+// 监听路由变化
+watch(route, () => {
+  checkContentHeight();
+});
 </script>
 
 <template>
   <footer class="flex flex-col items-end">
     <button
+      v-if="isButtonVisible"
       class="flex justify-center group relative w-8 h-8 border-[1px] border-gray-200 dark:border-gray-700 rounded transition-style hover:bg-gray-100 dark:hover:bg-gray-800"
       @click="scrollToTop"
     >
