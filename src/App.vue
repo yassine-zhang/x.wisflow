@@ -9,7 +9,7 @@ import Toaster from "@/components/ui/toast/Toaster.vue";
     <Header class="wrapper-row" />
   </section>
   <section class="wrapper">
-    <RouterView class="gt-standard" />
+    <RouterView class="gt-standard" v-motion-fade />
     <Footer />
   </section>
 
