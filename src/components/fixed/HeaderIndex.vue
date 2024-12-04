@@ -2,6 +2,7 @@
 import { Icon } from "@iconify/vue";
 import { useColorMode } from "@vueuse/core";
 import { computed } from "vue";
+import { useRoute } from "vue-router";
 
 // 封装样式逻辑
 const useLinkStyles = () => {
@@ -25,6 +26,10 @@ const toggleTheme = () => {
 };
 
 const linkStyles = useLinkStyles();
+const route = useRoute();
+
+// 判断是否为根目录
+const isRoot = computed(() => route.path === "/");
 </script>
 
 <template>
@@ -33,7 +38,8 @@ const linkStyles = useLinkStyles();
       <img
         src="@/assets/images/avatar.jpeg"
         alt="Profile"
-        class="w-14 h-14 rounded-full"
+        class="w-14 h-14 rounded-full transition-shadow duration-300"
+        :class="!isRoot ? 'hover:shadow-[0_0_0_2px_rgba(255,223,0,0.7)]' : ''"
       />
     </router-link>
     <nav class="flex space-x-4">
