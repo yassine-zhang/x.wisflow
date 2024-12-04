@@ -4,7 +4,7 @@ import { useToast } from "@/components/ui/toast/use-toast";
 const { toast } = useToast();
 
 const instance = axios.create({
-  baseURL: "http://localhost:8080",
+  baseURL: import.meta.env.VITE_API_BASE_URL,
   timeout: 5000,
   headers: {
     Authorization: `Bearer ${localStorage.getItem("token") || "Empty token value"}`,

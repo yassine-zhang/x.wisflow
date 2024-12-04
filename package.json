@@ -19,6 +19,8 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "dayjs": "^1.11.13",
+    "dompurify": "^3.2.2",
+    "marked": "^15.0.3",
     "modern-css-reset": "^1.4.0",
     "pinia": "^2.1.7",
     "pinia-plugin-persist": "^1.0.0",
