@@ -1,3 +1,5 @@
+/* 此样式表有依赖于 tailwindcss 指令(@apply) */
+
 .markdown-body {
   --base-size-4: 0.25rem;
   --base-size-8: 0.5rem;
@@ -177,7 +179,7 @@ html.light {
 .markdown-body a {
   background-color: transparent;
   color: var(--fgColor-accent);
-  text-decoration: none;
+  @apply underline-style;
 }
 
 .markdown-body abbr[title] {
@@ -304,6 +306,7 @@ html.light {
 
 .markdown-body a:hover {
   text-decoration: underline;
+  text-decoration-color: var(--fgColor-accent) !important;
 }
 
 .markdown-body ::placeholder {

@@ -1,21 +1,15 @@
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
-import { marked } from "marked";
-import DOMPurify from "dompurify";
 import { get } from "@/service/base/requests";
+import { parseMarkdown } from "@/utils/markdownUtils";
 
 // 用于存储解析后的 HTML 内容
 const markdownContent = ref("");
 
 // 读取并解析 Markdown 文件
 onMounted(async () => {
-  try {
-    const markdown = await get<string>("/content/base/me.md", "text");
-    const rawHtml = await marked(markdown);
-    markdownContent.value = DOMPurify.sanitize(rawHtml);
-  } catch (error) {
-    console.error("Error loading markdown file:", error);
-  }
+  const markdown = await get<string>("/content/base/me.md", "text");
+  markdownContent.value = await parseMarkdown(markdown);
 });
 </script>
 
