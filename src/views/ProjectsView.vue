@@ -15,12 +15,14 @@
         一款同时支持 Vue 2 和 Vue 3 的二维码组件。
       </p>
     </div>
+    <CdButton />
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
 import { calculateRemainingHeight } from "@/utils/calculateRemainingHeight";
+import CdButton from "@/components/CdButton.vue";
 
 const remainingHeight = ref<number | undefined>(0);
 const rootElement = ref<HTMLElement | null>(null);
