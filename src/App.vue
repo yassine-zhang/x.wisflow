@@ -18,10 +18,10 @@ import Toaster from "@/components/ui/toast/Toaster.vue";
 
 <style scoped>
 .wrapper {
-  @apply flex flex-col gap-8 max-w-3xl mx-auto px-4;
+  @apply flex flex-col max-w-3xl mx-auto px-4;
 }
 
 .wrapper-row {
-  @apply flex flex-row gap-8 max-w-3xl mx-auto px-4;
+  @apply max-w-3xl mx-auto px-4;
 }
 </style>
