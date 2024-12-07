@@ -48,7 +48,7 @@ const isRoot = computed(() => route.path === "/");
       <router-link to="/me" :class="linkStyles">关于</router-link>
       <button
         @click="toggleTheme"
-        class="text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white transition-style"
+        class="text-gray-500 dark:text-gray-500 hover:text-black dark:hover:text-white transition-style"
       >
         <Icon
           :icon="mode === 'dark' ? 'ph:moon-light' : 'ph:sun-light'"
