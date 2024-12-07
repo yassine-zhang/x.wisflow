@@ -76,6 +76,14 @@
   body {
     @apply bg-background text-foreground;
   }
+  html.dark body {
+    background: inherit;
+  }
+  html.dark {
+    background: linear-gradient(145deg, #041236, #020817 40%, #020817);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
 }
 
 @font-face {
@@ -100,7 +108,7 @@ pre {
 }
 
 .transition-style {
-  @apply transition-colors duration-300 ease-in-out;
+  @apply transition-all duration-300 ease-in-out;
 }
 .underline-style {
   @apply cursor-pointer underline decoration-gray-300 dark:decoration-gray-500 hover:decoration-gray-900 dark:hover:decoration-gray-100 underline-offset-4 transition-style;

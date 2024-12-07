@@ -43,7 +43,7 @@ const isRoot = computed(() => route.path === "/");
       />
     </router-link>
     <nav class="flex space-x-4">
-      <router-link to="/blogs" :class="linkStyles">文章</router-link>
+      <router-link to="/column" :class="linkStyles">专栏</router-link>
       <router-link to="/projects" :class="linkStyles">项目</router-link>
       <router-link to="/me" :class="linkStyles">关于</router-link>
       <button

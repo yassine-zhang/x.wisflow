@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import RootView from "@/views/RootView.vue";
-import BlogsView from "@/views/BlogsView.vue";
+import ColumnView from "@/views/ColumnView.vue";
 import ProjectsView from "@/views/ProjectsView.vue";
 import MeView from "@/views/MeView.vue";
 
@@ -11,9 +11,9 @@ const routes = [
     component: RootView,
   },
   {
-    path: "/blogs",
-    name: "Blogs",
-    component: BlogsView,
+    path: "/column",
+    name: "Column",
+    component: ColumnView,
   },
   {
     path: "/projects",
@@ -24,6 +24,11 @@ const routes = [
     path: "/me",
     name: "Me",
     component: MeView,
+  },
+  {
+    path: "/columns/:id",
+    name: "ColumnDetail",
+    component: ColumnView,
   },
 ];
 
