@@ -25,16 +25,24 @@
         <!-- 右边切换布局按钮 -->
         <div class="flex items-center gap-2">
           <Icon
-            class="cursor-pointer text-gray-500 dark:text-gray-500 transition-style"
-            :class="isGridLayout ? 'text-black dark:text-white' : ''"
+            class="cursor-pointer transition-style"
+            :class="
+              isGridLayout
+                ? 'text-black dark:text-white'
+                : 'text-gray-400 dark:text-gray-500'
+            "
             @click="toggleLayout(true)"
             icon="tabler:layout-grid"
             width="22"
             height="22"
           />
           <Icon
-            class="cursor-pointer text-gray-500 dark:text-gray-500 transition-style"
-            :class="!isGridLayout ? 'text-black dark:text-white' : ''"
+            class="cursor-pointer transition-style"
+            :class="
+              !isGridLayout
+                ? 'text-black dark:text-white'
+                : 'text-gray-400 dark:text-gray-500'
+            "
             @click="toggleLayout(false)"
             icon="tabler:list"
             width="26"
