@@ -51,8 +51,8 @@ function navigateToColumn(index: number) {
 
 <style scoped>
 .column-item {
-  @apply w-full max-w-96 sm:max-w-none flex flex-col justify-between cursor-pointer flex-1 p-5 h-32 border rounded-lg shadow-md scale-100 hover:scale-[101%];
-  @apply border-gray-300 dark:border-gray-500 hover:border-gray-900 dark:hover:border-gray-100;
+  @apply w-full sm:max-w-none flex flex-col justify-between cursor-pointer flex-1 p-5 h-32 border rounded-lg shadow-md scale-100 hover:scale-[101%];
+  @apply border-2 border-gray-300 dark:border-gray-500 hover:border-gray-900 dark:hover:border-gray-100;
   box-shadow: 6px 6px 8px rgba(58, 61, 74, 0.02);
 }
 
