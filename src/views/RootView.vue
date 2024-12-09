@@ -61,6 +61,7 @@
         :date="article.date"
         :categories="article.categories"
         :content="article.content"
+        :free="article.free"
       />
     </section>
 
@@ -89,6 +90,7 @@
         <h2 class="font-semibold text-gray-800 dark:text-gray-200">近期项目</h2>
         <button
           class="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-style"
+          @click="navigateToProjects"
         >
           全部项目
         </button>
@@ -174,23 +176,26 @@ const articles = ref([
   {
     title: "JavaScript 对分组方法 `Object.groupBy()` 和 `Map.groupBy()`",
     date: "2024 年 10 月 12 日",
-    categories: ["#javascript"],
+    categories: ["#物联网技能大赛知识预览"],
     content:
       "在日常开发中我们经常需要对数组和类数组等可迭代对象按照一定的条件进行分组，现在 JavaScript 支持静态方法 Object.groupBy() 和 Map.groupBy()",
+    free: true,
   },
   {
     title: "尽情使用 AbortController（Don't Sleep on AbortController）",
     date: "2024 年 9 月 29 日",
-    categories: ["#javascript"],
+    categories: ["#Web全栈开发-企业解决方案"],
     content:
       "AbortController 是一个标准的 JavaScript API，当需要取消请求、移除事件监听器、中止流，或使任何逻辑程中止时，你都可以有效地利用 AbortController。",
+    free: false,
   },
   {
     title: "React 19 更新精简纪要",
     date: "2024 年 9 月 26 日",
-    categories: ["#react", "#javascript"],
+    categories: ["#Element Plus 组件库学习"],
     content:
       "最近知名的 React 开发者 Kent C. Dodds 发表一页 React 19 的功能更新纪要，精简到一页 PDF。",
+    free: true,
   },
 ]);
 
@@ -224,6 +229,10 @@ const router = useRouter();
 
 function navigateToCategory() {
   router.push("/category");
+}
+
+function navigateToProjects() {
+  router.push("/projects");
 }
 </script>
 <style scoped>

@@ -15,8 +15,13 @@
       class="badge-base"
       :class="data.free ? 'badge' : 'badge-pro'"
     >
-      <Icon icon="mdi:book-open-page-variant" class="icon" />
-      <span class="text-sm">{{ data.articleCount }} 篇</span>
+      <Icon
+        icon="mdi:book-open-page-variant"
+        class="icon"
+        width="10"
+        height="10"
+      />
+      <span class="text-xs">{{ data.articleCount }} 篇</span>
     </div>
   </div>
 </template>
@@ -52,13 +57,13 @@ function navigateToColumn(index: number) {
 }
 
 .badge-base {
-  @apply absolute bottom-0 right-0 bg-opacity-75 text-white px-2 py-1 rounded-tl-lg rounded-br-lg flex items-center;
+  @apply absolute bottom-0 right-0 bg-opacity-75 px-2 py-1 rounded-tl-lg rounded-br-lg flex items-center justify-center;
 }
 .badge {
-  @apply bg-gray-800 dark:bg-gray-600;
+  @apply bg-gray-800 dark:bg-gray-600 text-white;
 }
 .badge-pro {
-  @apply bg-yellow-500 dark:bg-yellow-600;
+  @apply bg-yellow-400 dark:bg-yellow-400 text-black;
 }
 
 .icon {

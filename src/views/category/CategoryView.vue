@@ -105,6 +105,7 @@
             :date="article.date"
             :categories="article.categories"
             :content="article.content"
+            :free="article.free"
           />
         </div>
       </div>
@@ -157,18 +158,21 @@ const articles = ref([
     date: "2024 年 10 月 12 日",
     categories: [],
     content: "",
+    free: true,
   },
   {
     title: "尽情使用 AbortController（Don't Sleep on AbortController）",
     date: "2024 年 9 月 29 日",
     categories: [],
     content: "",
+    free: true,
   },
   {
     title: "React 19 更新精简纪要",
     date: "2024 年 9 月 26 日",
     categories: [],
     content: "",
+    free: true,
   },
 ]);
 
