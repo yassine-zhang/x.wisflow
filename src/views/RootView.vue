@@ -28,6 +28,7 @@
         <h2 class="font-semibold text-gray-800 dark:text-gray-200">热门专栏</h2>
         <button
           class="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-style"
+          @click="navigateToCategory"
         >
           全部专栏
         </button>
@@ -106,6 +107,7 @@
 <script setup lang="ts">
 import { Icon } from "@iconify/vue";
 import { ref, onMounted } from "vue";
+import { useRouter } from "vue-router";
 import { useMotion } from "@vueuse/motion";
 import ProjectItem from "@/components/ProjectItem.vue";
 import ExperienceItem from "@/components/ExperienceItem.vue";
@@ -181,7 +183,7 @@ const articles = ref([
     date: "2024 年 9 月 29 日",
     categories: ["#javascript"],
     content:
-      "AbortController 是一个���准的 JavaScript API，当需要取消请求、移除事件监听器、中止流，或使任何逻辑程中止时，你都可以有效地利用 AbortController。",
+      "AbortController 是一个标准的 JavaScript API，当需要取消请求、移除事件监听器、中止流，或使任何逻辑程中止时，你都可以有效地利用 AbortController。",
   },
   {
     title: "React 19 更新精简纪要",
@@ -217,6 +219,12 @@ const projects = ref([
       "A Vue.js component to generate qrcode. Supports both Vue 2 and Vue 3. 一款同时支持 Vue 2 和 Vue 3 的二维码组件。",
   },
 ]);
+
+const router = useRouter();
+
+function navigateToCategory() {
+  router.push("/category");
+}
 </script>
 <style scoped>
 .item-outline {

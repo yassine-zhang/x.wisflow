@@ -1,6 +1,9 @@
 import { createRouter, createWebHistory } from "vue-router";
 import RootView from "@/views/RootView.vue";
-import CategoryView from "@/views/CategoryView.vue";
+
+import CategoryView from "@/views/category/CategoryView.vue";
+import CategoryDetail from "@/views/category/CategoryDetail.vue";
+
 import ProjectsView from "@/views/ProjectsView.vue";
 import MeView from "@/views/MeView.vue";
 
@@ -28,7 +31,7 @@ const routes = [
   {
     path: "/category/:id",
     name: "CategoryDetail",
-    component: CategoryView,
+    component: CategoryDetail,
   },
 ];
 
