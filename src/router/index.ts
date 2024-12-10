@@ -1,8 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import type { RouteLocationNormalized, NavigationGuardNext } from "vue-router";
 import RootView from "@/views/RootView.vue";
-import CategoryDetail from "@/views/category/CategoryDetail.vue";
-import MeView from "@/views/MeView.vue";
 import { useStaticMarkdownLoader } from "@/composables/useStaticMarkdownLoader";
 import meMarkdown from "@/content/base/me.md?raw";
 import { useProgressStore } from "@/stores/progress";
@@ -26,7 +24,7 @@ const routes = [
   {
     path: "/me",
     name: "Me",
-    component: MeView,
+    component: import("@/views/MeView.vue"),
     beforeEnter: async (
       to: RouteLocationNormalized,
       from: RouteLocationNormalized,
@@ -47,7 +45,12 @@ const routes = [
   {
     path: "/category/:id",
     name: "CategoryDetail",
-    component: CategoryDetail,
+    component: import("@/views/category/CategoryDetail.vue"),
+  },
+  {
+    path: "/blog/:slug",
+    name: "Blog",
+    component: import("@/views/BlogView.vue"),
   },
 ];
 

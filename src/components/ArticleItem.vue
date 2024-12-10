@@ -7,9 +7,9 @@
     "
   >
     <h3 class="font-medium text-gray-800 dark:text-gray-200">
-      <span class="underline-style">
+      <RouterLink :to="`/blog/${slug}`" class="underline-style">
         {{ title }}
-      </span>
+      </RouterLink>
     </h3>
     <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">
       {{ date }}
@@ -19,8 +19,7 @@
           class="mx-1 text-gray-500 dark:text-gray-400"
           :key="categoryIndex"
         >
-          <RouterLink :to="`/category/${category.replace('#', '')}`">
-            <!--  :variant="free ? 'secondary' : 'default'" -->
+          <RouterLink :to="`/category/${category}`">
             <Badge class="badge-base" :class="free ? 'badge' : 'badge-pro'">
               {{ category }}
             </Badge>
@@ -43,6 +42,7 @@ const props = defineProps<{
   categories: string[];
   content: string;
   free: boolean;
+  slug: string;
 }>();
 </script>
 <style scoped>

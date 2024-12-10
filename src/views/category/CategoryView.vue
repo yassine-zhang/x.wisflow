@@ -106,6 +106,7 @@
             :categories="article.categories"
             :content="article.content"
             :free="article.free"
+            :slug="article.slug"
           />
         </div>
       </div>
@@ -159,6 +160,7 @@ const articles = ref([
     categories: [],
     content: "",
     free: true,
+    slug: "javascript-groupby",
   },
   {
     title: "尽情使用 AbortController（Don't Sleep on AbortController）",
@@ -166,6 +168,7 @@ const articles = ref([
     categories: [],
     content: "",
     free: true,
+    slug: "abortcontroller",
   },
   {
     title: "React 19 更新精简纪要",
@@ -173,6 +176,7 @@ const articles = ref([
     categories: [],
     content: "",
     free: true,
+    slug: "react-19-update-summary",
   },
 ]);
 
