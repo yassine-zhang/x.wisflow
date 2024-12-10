@@ -2,10 +2,15 @@
 import Header from "@/components/fixed/HeaderIndex.vue";
 import Footer from "@/components/fixed/FooterIndex.vue";
 import Toaster from "@/components/ui/toast/Toaster.vue";
+import ProgressBar from "@/components/ui/ProgressBar.vue";
+import { useProgressStore } from "@/stores/progress";
+
+const progressStore = useProgressStore();
 </script>
 
 <template>
   <section class="w-full shadow-sm mb-16">
+    <ProgressBar :progress="progressStore.progressValue" :allow-hide="true" />
     <Header class="wrapper-row" />
   </section>
   <section class="wrapper">
