@@ -18,8 +18,10 @@ const props = defineProps<{
     <p class="text-sm text-gray-500 dark:text-gray-400">
       {{ title }}
     </p>
-    <p v-if="content" class="mt-4 text-gray-600 dark:text-gray-400">
-      {{ content }}
-    </p>
+    <p
+      v-if="content"
+      v-html="content"
+      class="mt-4 text-gray-600 dark:text-gray-400"
+    ></p>
   </article>
 </template>

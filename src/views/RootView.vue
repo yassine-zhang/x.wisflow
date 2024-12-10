@@ -45,7 +45,7 @@
     </section>
 
     <section class="item-outline">
-      <header class="flex items-center justify-between">
+      <header class="flex items-center justify-between mb-2">
         <h2 class="font-semibold text-gray-800 dark:text-gray-200">近期文章</h2>
         <button
           class="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-style"
@@ -55,7 +55,7 @@
       </header>
       <ArticleItem
         v-for="(article, index) in articles"
-        class="my-6"
+        class="my-4"
         :key="index"
         :title="article.title"
         :date="article.date"
@@ -67,17 +67,19 @@
     </section>
 
     <section class="item-outline">
-      <header class="flex items-center justify-between">
+      <header class="flex items-center justify-between mb-2">
         <h2 class="font-semibold text-gray-800 dark:text-gray-200">工作经验</h2>
-        <button
-          class="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-style"
-        >
-          工作历程
-        </button>
+        <RouterLink to="/work">
+          <button
+            class="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-style"
+          >
+            工作历程
+          </button>
+        </RouterLink>
       </header>
       <ExperienceItem
         v-for="(experience, index) in experiences"
-        class="my-6"
+        class="my-4"
         :key="index"
         :title="experience.title"
         :company="experience.company"
@@ -87,7 +89,7 @@
     </section>
 
     <section class="item-outline">
-      <header class="flex items-center justify-between">
+      <header class="flex items-center justify-between mb-2">
         <h2 class="font-semibold text-gray-800 dark:text-gray-200">近期项目</h2>
         <button
           class="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-style"
@@ -98,7 +100,7 @@
       </header>
       <ProjectItem
         v-for="(project, index) in projects"
-        class="my-6"
+        class="my-4"
         :key="index"
         :title="project.title"
         :date="project.date"

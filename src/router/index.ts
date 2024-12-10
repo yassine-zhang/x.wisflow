@@ -52,6 +52,11 @@ const routes = [
     name: "Blog",
     component: import("@/views/BlogView.vue"),
   },
+  {
+    path: "/work",
+    name: "Work",
+    component: import("@/views/WorkView.vue"),
+  },
 ];
 
 const router = createRouter({
