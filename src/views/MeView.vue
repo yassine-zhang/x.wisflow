@@ -1,20 +1,17 @@
 <script setup lang="ts">
-import { ref, nextTick, onMounted } from "vue";
-import { useStaticMarkdownLoader } from "@/composables/useStaticMarkdownLoader";
+import { ref, onMounted } from "vue";
+import { useRoute } from "vue-router";
 import { calculateRemainingHeight } from "@/utils/calculateRemainingHeight";
-import meMarkdown from "@/content/base/me.md?raw";
 
-const { htmlContent, loadMarkdown } = useStaticMarkdownLoader();
+const route = useRoute();
+const htmlContent = ref<string>((route.params.htmlContent as string) || "");
 
 const remainingHeight = ref<number | undefined>(0);
 const rootElement = ref<HTMLElement | null>(null);
 
-onMounted(async () => {
-  await loadMarkdown(meMarkdown);
-  nextTick(() => {
-    const rootHeight = rootElement.value?.offsetHeight || 0;
-    remainingHeight.value = calculateRemainingHeight(248 + rootHeight);
-  });
+onMounted(() => {
+  const rootHeight = rootElement.value?.offsetHeight || 0;
+  remainingHeight.value = calculateRemainingHeight(248 + rootHeight);
 });
 </script>
 
