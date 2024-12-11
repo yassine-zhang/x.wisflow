@@ -36,7 +36,10 @@
 
       <div class="flex flex-wrap gap-4 mt-4">
         <CategoryItem
-          v-for="(category, index) in dataStore.categories"
+          v-for="(category, index) in dataStore.categories.slice(
+            0,
+            dataStore.sliceCounts.categories,
+          )"
           :key="index"
           :data="category"
           :index="index"
@@ -58,7 +61,10 @@
         </RouterLink>
       </header>
       <ArticleItem
-        v-for="(article, index) in dataStore.articles"
+        v-for="(article, index) in dataStore.articles.slice(
+          0,
+          dataStore.sliceCounts.articles,
+        )"
         class="my-4"
         :key="index"
         :data="article"
@@ -78,7 +84,10 @@
         </RouterLink>
       </header>
       <ExperienceItem
-        v-for="(experience, index) in dataStore.experiences.slice(0, 2)"
+        v-for="(experience, index) in dataStore.experiences.slice(
+          0,
+          dataStore.sliceCounts.experiences,
+        )"
         class="my-4"
         :key="index"
         :title="experience.title"
@@ -99,7 +108,10 @@
         </button>
       </header>
       <ProjectItem
-        v-for="(project, index) in dataStore.projects.slice(0, 2)"
+        v-for="(project, index) in dataStore.projects.slice(
+          0,
+          dataStore.sliceCounts.projects,
+        )"
         class="my-4"
         :key="index"
         :title="project.title"

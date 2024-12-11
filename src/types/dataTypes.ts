@@ -49,3 +49,11 @@ export interface Project {
   date: string;
   content: string;
 }
+
+// 定义 SliceCounts 类型
+export interface SliceCounts {
+  categories: number;
+  articles: number;
+  experiences: number;
+  projects: number;
+}

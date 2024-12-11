@@ -6,6 +6,7 @@ import type {
   Article,
   Experience,
   Project,
+  SliceCounts,
 } from "../types/dataTypes";
 
 export const useDataStore = defineStore("dataStore", () => {
@@ -71,7 +72,7 @@ export const useDataStore = defineStore("dataStore", () => {
       date: "2024 年 7 月 11 日",
       categories: ["Web全栈开发-企业解决方案"],
       content:
-        "GPT-SoVITS 是一种基于 AI 技术的工具，主要应用于 语音转换（Voice Conversion, VC） 场景。具体来说，它结合了 GPT 的文本处理能力和 SoVITS（Soft Voice Identity Transfer System） 的语音转换技术，用于高质量的语音合成和特定声音风格的转换。",
+        "GPT-SoVITS 是一种基于 AI 技术的工具，要应用于 语音转换（Voice Conversion, VC） 场景。具体来说，它结合了 GPT 的文本处理能力和 SoVITS（Soft Voice Identity Transfer System） 的语音转换技术，用于高质量的语音合成和特定声音风格的转换。",
       free: false,
       slug: "gpt-sovits-from-training-to-inference",
       prefix: "enterprise-solution",
@@ -92,14 +93,14 @@ export const useDataStore = defineStore("dataStore", () => {
       company: "众安保险",
       date: "8月2020 - 7月2021",
       content:
-        "该项目由众安保险公司提供，结了互联网保险和医疗服务，涵盖在线图文问诊、视频问诊、医生在线开处方以及患者在线购药。项目不仅与众安保险的健康险业务无缝集成，还支持与云闪付等不同渠道的对接。",
+        "该项目由众安保险公司提供，结了互联网保险和医疗服务，涵盖在线图文问诊、视频问诊、医生在线开处��以及患者在线购药。项目不仅与众安保险的健康险业务无缝集成，还支持与云闪付等不同渠道的对接。",
     },
     {
       title: "高级前端工程师",
       company: "易居中国",
       date: "6月2016 - 7月2020",
       content:
-        "该项目为房地产企业提供项目投资数据服务，覆盖全国 90 多家领先房地产公司在 26 个城市的地产项目管理。主要功能包括企业项目管理和项目资产管理，涉及���产查询、市场监控、城市周边信息和宏观指标的数据分析与查询。我们设计并开发了相应的管理后台，确保其顺利交付使用。<br/><br/>在当前资产管理进入存量时代的背景下，该项目旨在帮助项目所有者实现资产的合理有效管理。项目提供经营数据分析、项目诊断和资产评估等服务，助力项目所有者优化资产管理。项目团队在立项后用四个月时间完成了主要流程和功能的开发。",
+        "该项目为房地产企业提供项目投资数据服务，覆盖全国 90 多家领先房地产公司在 26 个城市的地产项目管理。主要功能包括企业项目管理和项目资产管理，涉及地产查询、市场监控、城市周边信息和宏观指标的数据分析与查询。我们设计并开发了相应的管理后台，确保其顺利交付使用。<br/><br/>在当前资产管理进入存量时代的背景下，该项目旨在帮助项目所有者实现资产的合理有效管理。项目提供经营数据分析、项目诊断和资产评估等服务，助力项目所有者优化资产管理。项目团队在立项后用四个月时间完成了主要流程和功能的开发。",
     },
   ]);
 
@@ -112,5 +113,12 @@ export const useDataStore = defineStore("dataStore", () => {
     },
   ]);
 
-  return { profile, categories, articles, experiences, projects };
+  const sliceCounts = ref<SliceCounts>({
+    categories: 5,
+    articles: 5,
+    experiences: 2,
+    projects: 2,
+  });
+
+  return { profile, categories, articles, experiences, projects, sliceCounts };
 });
