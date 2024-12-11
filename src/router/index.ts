@@ -14,17 +14,17 @@ const routes = [
   {
     path: "/category",
     name: "Category",
-    component: import("@/views/category/CategoryView.vue"),
+    component: () => import("@/views/category/CategoryView.vue"),
   },
   {
     path: "/projects",
     name: "Projects",
-    component: import("@/views/ProjectsView.vue"),
+    component: () => import("@/views/ProjectsView.vue"),
   },
   {
     path: "/me",
     name: "Me",
-    component: import("@/views/MeView.vue"),
+    component: () => import("@/views/MeView.vue"),
     beforeEnter: async (
       to: RouteLocationNormalized,
       from: RouteLocationNormalized,
@@ -45,17 +45,17 @@ const routes = [
   {
     path: "/category/:id",
     name: "CategoryDetail",
-    component: import("@/views/category/CategoryDetail.vue"),
+    component: () => import("@/views/category/CategoryDetail.vue"),
   },
   {
     path: "/blog/:slug",
     name: "Blog",
-    component: import("@/views/BlogView.vue"),
+    component: () => import("@/views/BlogView.vue"),
   },
   {
     path: "/work",
     name: "Work",
-    component: import("@/views/WorkView.vue"),
+    component: () => import("@/views/WorkView.vue"),
   },
 ];
 

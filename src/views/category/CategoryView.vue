@@ -31,7 +31,7 @@
                 ? 'text-black dark:text-white'
                 : 'text-gray-400 dark:text-gray-500'
             "
-            @click="toggleLayout(true)"
+            @click="setGridLayout(true)"
             icon="tabler:layout-grid"
             width="22"
             height="22"
@@ -43,7 +43,7 @@
                 ? 'text-black dark:text-white'
                 : 'text-gray-400 dark:text-gray-500'
             "
-            @click="toggleLayout(false)"
+            @click="setGridLayout(false)"
             icon="tabler:list"
             width="26"
             height="26"
@@ -126,14 +126,22 @@ import ArticleItem from "@/components/ArticleItem.vue";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useDataStore } from "@/stores/useDataStore";
+import { useRoute, useRouter } from "vue-router";
 
+const route = useRoute();
+const router = useRouter();
 const remainingHeight = ref<number | undefined>(0);
 const rootElement = ref<HTMLElement | null>(null);
 const dataStore = useDataStore();
 
 const isGridLayout = ref(true);
-function toggleLayout(value: boolean) {
+function setGridLayout(value: boolean) {
   isGridLayout.value = value;
+  router.push({
+    query: {
+      type: value ? "grid" : "list",
+    },
+  });
 }
 
 const isDarkMode = ref(false);
@@ -196,6 +204,8 @@ const updateDarkMode = (e: MediaQueryListEvent) => {
 onMounted(() => {
   const rootHeight = rootElement.value?.offsetHeight || 0;
   remainingHeight.value = calculateRemainingHeight(248 + rootHeight);
+
+  if (route.query.type === "list") isGridLayout.value = false;
 
   updateThemeMode();
   darkModeMediaQuery.addEventListener("change", updateDarkMode);

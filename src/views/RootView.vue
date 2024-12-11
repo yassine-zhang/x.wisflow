@@ -48,11 +48,13 @@
     <section class="item-outline">
       <header class="flex items-center justify-between mb-2">
         <h2 class="font-semibold text-gray-800 dark:text-gray-200">近期文章</h2>
-        <button
-          class="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-style"
-        >
-          全部文章
-        </button>
+        <RouterLink to="/category?type=list">
+          <button
+            class="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-style"
+          >
+            全部文章
+          </button>
+        </RouterLink>
       </header>
       <ArticleItem
         v-for="(article, index) in dataStore.articles"
@@ -139,7 +141,7 @@ onMounted(() => {
 const router = useRouter();
 
 function navigateToCategory() {
-  router.push("/category");
+  router.push("/category?type=grid");
 }
 
 function navigateToProjects() {
