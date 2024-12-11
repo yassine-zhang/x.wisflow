@@ -6,8 +6,8 @@
         {{ data.description }}
       </p>
     </div>
-    <div class="text-xs text-gray-500 dark:text-gray-400">
-      <span class="text-gray-800 dark:text-gray-200">{{ data.views }}</span>
+    <div class="mt-1 text-xs text-gray-500 dark:text-gray-400">
+      <span class="text-gray-800 dark:text-gray-200">{{ formattedViews }}</span>
       次看过
     </div>
     <div
@@ -29,15 +29,11 @@
 <script setup lang="ts">
 import { Icon } from "@iconify/vue";
 import { useRouter } from "vue-router";
+import { computed } from "vue";
+import type { Category } from "@/types/dataTypes";
 
 const props = defineProps<{
-  data: {
-    title: string;
-    description: string;
-    views: number;
-    articleCount: number;
-    free: boolean;
-  };
+  data: Category;
   index: number;
   allowShowAll: boolean;
 }>();
@@ -45,14 +41,22 @@ const props = defineProps<{
 const router = useRouter();
 
 function navigateToColumn(index: number) {
-  const categoryId = `${index}`; // 假设每个专栏有一个唯一的 ID
+  const categoryId = `${index}`;
   router.push(`/category/${categoryId}`);
 }
+
+const formattedViews = computed(() => {
+  const views = props.data.views;
+  if (views >= 1000) {
+    return (views / 1000).toFixed(views % 1000 === 0 ? 0 : 2) + "k";
+  }
+  return views.toString();
+});
 </script>
 
 <style scoped>
 .column-item {
-  @apply w-full sm:max-w-none flex flex-col justify-between cursor-pointer flex-1 p-5 h-32 border rounded-lg shadow-md scale-100 hover:scale-[101%];
+  @apply w-full sm:max-w-none flex flex-col justify-between cursor-pointer p-5 h-32 border rounded-lg shadow-md scale-100 hover:scale-[101%];
   @apply border-2 border-gray-300 dark:border-gray-500 hover:border-gray-900 dark:hover:border-gray-100;
   box-shadow: 6px 6px 8px rgba(58, 61, 74, 0.02);
 }

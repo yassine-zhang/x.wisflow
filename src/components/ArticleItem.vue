@@ -7,7 +7,10 @@
     "
   >
     <h3 class="font-medium text-gray-800 dark:text-gray-200">
-      <RouterLink :to="`/blog/${data.slug}`" class="underline-style">
+      <RouterLink
+        :to="`/blog/${data.prefix}/${data.slug}`"
+        class="underline-style"
+      >
         {{ data.title }}
       </RouterLink>
     </h3>
@@ -41,16 +44,10 @@
 <script lang="ts" setup>
 import { Badge } from "@/components/ui/badge";
 import { RouterLink } from "vue-router";
+import type { Article } from "@/types/dataTypes";
 
 const props = defineProps<{
-  data: {
-    title: string;
-    date: string;
-    categories: string[];
-    content: string;
-    free: boolean;
-    slug: string;
-  };
+  data: Article;
   allowShowAll: boolean;
 }>();
 </script>

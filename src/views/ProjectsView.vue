@@ -11,7 +11,7 @@
         :key="project.title"
         :title="project.title"
         :date="project.date"
-        :description="project.content"
+        :content="project.content"
       />
     </div>
     <CdButton />

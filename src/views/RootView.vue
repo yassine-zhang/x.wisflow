@@ -15,7 +15,7 @@
         <a
           v-for="(icon, index) in dataStore.profile.socialIcons"
           :key="index"
-          href="#"
+          :href="icon.link"
           target="_blank"
         >
           <Icon :icon="icon.icon" :class="['w-6 h-6', icon.color]" />
@@ -34,13 +34,14 @@
         </button>
       </header>
 
-      <div class="flex flex-wrap-reverse gap-4 mt-4">
+      <div class="flex flex-wrap gap-4 mt-4">
         <CategoryItem
           v-for="(category, index) in dataStore.categories"
           :key="index"
           :data="category"
           :index="index"
           :allow-show-all="false"
+          :class="index === 0 ? 'flex-2' : 'flex-1'"
         />
       </div>
     </section>
@@ -103,7 +104,7 @@
         :key="index"
         :title="project.title"
         :date="project.date"
-        :description="project.content"
+        :content="project.content"
       />
     </section>
   </section>

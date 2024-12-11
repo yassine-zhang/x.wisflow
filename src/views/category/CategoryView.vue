@@ -72,7 +72,7 @@
     </div>
 
     <!-- 列表布局专栏 -->
-    <div v-else>
+    <div class="w-full" v-else>
       <div
         v-for="(category, index) in dataStore.categories"
         :key="index"
@@ -103,7 +103,10 @@
             ref="rippleEffect"
           ></div>
           <ArticleItem
-            v-for="(article, index) in dataStore.articles"
+            v-for="(article, index) in filteredArticles(category.title).slice(
+              0,
+              5,
+            )"
             :key="index"
             class="my-2 sm:my-4"
             :data="article"
@@ -117,7 +120,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from "vue";
+import { ref, onMounted, onUnmounted, computed } from "vue";
 import { calculateRemainingHeight } from "@/utils/calculateRemainingHeight";
 import CdButton from "@/components/CdButton.vue";
 import { Icon } from "@iconify/vue";
@@ -200,6 +203,15 @@ const updateDarkMode = (e: MediaQueryListEvent) => {
     isDarkMode.value = e.matches;
   }
 };
+
+// 计算属性，用于过滤文章
+const filteredArticles = computed(() => {
+  return (categoryTitle: string) => {
+    return dataStore.articles.filter((article) =>
+      article.categories.includes(categoryTitle),
+    );
+  };
+});
 
 onMounted(() => {
   const rootHeight = rootElement.value?.offsetHeight || 0;

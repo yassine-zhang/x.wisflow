@@ -1,76 +1,85 @@
 import { defineStore } from "pinia";
 import { ref } from "vue";
+import type {
+  Profile,
+  Category,
+  Article,
+  Experience,
+  Project,
+} from "../types/dataTypes";
 
 export const useDataStore = defineStore("dataStore", () => {
-  const profile = ref({
+  const profile = ref<Profile>({
     name: "张永鑫",
     greeting: "Hi, I'm 张永鑫 👋",
     description:
-      "前端开发工程师，热爱 JavaScript 和 React。日常生活中，我喜欢骑单车 🚴、钓鱼 🎣 和爬山 🧗。",
-    recordDate: "2019 年 5 月 13 日，记录 TIE.PUB。",
+      "NodeJS/Bun 全栈开发工程师，热爱前沿 AI 技术。日常生活中，我喜欢骑单车 🚴、健身🏋️。",
+    recordDate: "2024 年 12 月 11 日，记录 x.wisflow.cn。",
     socialIcons: [
-      { icon: "mdi:twitter", color: "text-blue-500" },
-      { icon: "mdi:github", color: "text-gray-800 dark:text-gray-200" },
-      { icon: "mdi:email", color: "text-red-500" },
+      {
+        icon: "ri:bilibili-fill",
+        color: "text-pink-500",
+        link: "https://space.bilibili.com/3493138205247599",
+      },
+      {
+        icon: "mdi:github",
+        color: "text-gray-800 dark:text-gray-200",
+        link: "https://github.com/yassine-zhang",
+      },
+      { icon: "mdi:email", color: "text-red-500", link: "mailto:hi@itcox.cn" },
     ],
   });
 
-  const categories = ref([
-    {
-      title: "物联网技能大赛知识预览",
-      description: "了解技能大赛笔记入口",
-      views: 4078,
-      articleCount: 15,
-      free: true,
-    },
-    {
-      title: "Element Plus 组件库学习",
-      description: "基于 Vue 3，面向设计师和开发者的组件库",
-      views: 41,
-      articleCount: 20,
-      free: true,
-    },
+  const categories = ref<Category[]>([
     {
       title: "Web全栈开发-企业解决方案",
-      description:
-        "在阅本专栏期刊之前，我强烈建议您有必要了解以下技术栈，以充分理解讲解内容意图，如有不明之处请加我好友咨询（备注来意）",
-      views: 9637,
-      articleCount: 5,
+      description: "实际开发业务中有用的新型前沿技术解决方案",
+      views: 4078,
+      articleCount: 4,
       free: false,
+    },
+    {
+      title: "DevOps 开发运维",
+      description: "记录运维开发中遇到的问题和解决方案",
+      views: 739,
+      articleCount: 1,
+      free: true,
+    },
+    {
+      title: "CSS 学习",
+      description: "记录 CSS 学习笔记",
+      views: 391,
+      articleCount: 2,
+      free: true,
     },
   ]);
 
-  const articles = ref([
+  const articles = ref<Article[]>([
     {
-      title: "JavaScript 对分组方法 `Object.groupBy()` 和 `Map.groupBy()`",
-      date: "2024 年 10 月 12 日",
-      categories: ["物联网技能大赛知识预览"],
-      content:
-        "在日常开发中我们经常需要对数组和类数组等可迭代对象按照一定的条件进行分组，现在 JavaScript 支持静态方法 Object.groupBy() 和 Map.groupBy()",
-      free: true,
-      slug: "javascript-groupby",
-    },
-    {
-      title: "尽情使用 AbortController（Don't Sleep on AbortController）",
-      date: "2024 年 9 月 29 日",
+      title: "第zero期、当前专栏涉及技术要点",
+      date: "2024 年 8 月 10 日",
       categories: ["Web全栈开发-企业解决方案"],
       content:
-        "AbortController 是一个标准的 JavaScript API，当需要取消请求、移除事件监听器、中止流，或使任何逻辑程中止时，你都可以有效地利用 AbortController。",
+        "在查阅本专栏期刊之前，我强烈建议您有必要了解以下技术栈，以充分理解讲解内容意图，如有不明之处请加我好友咨询（备注来意）",
       free: false,
-      slug: "abortcontroller",
+      slug: "zero-technical-point",
+      prefix: "enterprise-solution",
+      path: "/src/content/enterprise-solution/zero-technical-point.md",
     },
     {
-      title: "React 19 更新精简纪要",
-      date: "2024 年 9 月 26 日",
-      categories: ["Element Plus 组件库学习"],
+      title: "第一期、使用GPT-SoVITS从训练数据到推理使用",
+      date: "2024 年 7 月 11 日",
+      categories: ["Web全栈开发-企业解决方案"],
       content:
-        "最近知名的 React 开发者 Kent C. Dodds 发表一页 React 19 的功能更新纪要，精简到一页 PDF。",
-      free: true,
-      slug: "react-19-update-summary",
+        "GPT-SoVITS 是一种基于 AI 技术的工具，主要应用于 语音转换（Voice Conversion, VC） 场景。具体来说，它结合了 GPT 的文本处理能力和 SoVITS（Soft Voice Identity Transfer System） 的语音转换技术，用于高质量的语音合成和特定声音风格的转换。",
+      free: false,
+      slug: "gpt-sovits-from-training-to-inference",
+      prefix: "enterprise-solution",
+      path: "/src/content/enterprise-solution/gpt-sovits-from-training-to-inference.md",
     },
   ]);
 
-  const experiences = ref([
+  const experiences = ref<Experience[]>([
     {
       title: "高级前端工程师",
       company: "嘉会医院",
@@ -90,11 +99,11 @@ export const useDataStore = defineStore("dataStore", () => {
       company: "易居中国",
       date: "6月2016 - 7月2020",
       content:
-        "该项目为房地产企业提供项目投资数据服务，覆盖全国 90 多家领先房地产公司在 26 个城市的地产项目管理。主要功能包括企业项目管理和项目资产管理，涉及资产查询、市场监控、城市周边信息和宏观指标的数据分析与查询。我们设计并开发了相应的管理后台，确保其顺利交付使用。<br/><br/>在当前资产管理进入存量时代的背景下，该项目旨在帮助项目所有者实现资产的合理有效管理。项目提供经营数据分析、项目诊断和资产评估等服务，助力项目所有者优化资产管理。项目团队在立项后用四个月时间完成了主要流程和功能的开发。",
+        "该项目为房地产企业提供项目投资数据服务，覆盖全国 90 多家领先房地产公司在 26 个城市的地产项目管理。主要功能包括企业项目管理和项目资产管理，涉及���产查询、市场监控、城市周边信息和宏观指标的数据分析与查询。我们设计并开发了相应的管理后台，确保其顺利交付使用。<br/><br/>在当前资产管理进入存量时代的背景下，该项目旨在帮助项目所有者实现资产的合理有效管理。项目提供经营数据分析、项目诊断和资产评估等服务，助力项目所有者优化资产管理。项目团队在立项后用四个月时间完成了主要流程和功能的开发。",
     },
   ]);
 
-  const projects = ref([
+  const projects = ref<Project[]>([
     {
       title: "qrcode.vue",
       date: "2024 年 8 月 22 日",
