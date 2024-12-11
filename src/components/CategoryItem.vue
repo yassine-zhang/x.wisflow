@@ -11,7 +11,7 @@
       次看过
     </div>
     <div
-      v-if="data.articleCount"
+      v-if="allowShowAll"
       class="badge-base"
       :class="data.free ? 'badge' : 'badge-pro'"
     >
@@ -39,6 +39,7 @@ const props = defineProps<{
     free: boolean;
   };
   index: number;
+  allowShowAll: boolean;
 }>();
 
 const router = useRouter();
@@ -57,7 +58,7 @@ function navigateToColumn(index: number) {
 }
 
 .badge-base {
-  @apply absolute bottom-0 right-0 bg-opacity-75 px-2 py-1 rounded-tl-lg rounded-br-lg flex items-center justify-center;
+  @apply absolute bottom-0 right-0 bg-opacity-75 px-2 py-1 rounded-tl-lg rounded-br-md flex items-center justify-center;
 }
 .badge {
   @apply bg-gray-800 dark:bg-gray-600 text-white;

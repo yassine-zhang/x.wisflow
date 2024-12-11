@@ -63,16 +63,21 @@
       </div>
 
       <CategoryItem
-        v-for="(category, index) in categories"
+        v-for="(category, index) in dataStore.categories"
         :key="index"
         :data="category"
         :index="index"
+        :allow-show-all="true"
       />
     </div>
 
     <!-- 列表布局专栏 -->
     <div v-else>
-      <div v-for="(category, index) in categories" :key="index" class="mb-12">
+      <div
+        v-for="(category, index) in dataStore.categories"
+        :key="index"
+        class="mb-12"
+      >
         <div class="flex items-center justify-between gap-2 mt-4">
           <div class="flex items-center gap-2">
             <h3 class="text-md font-medium">{{ category.title }}</h3>
@@ -98,15 +103,11 @@
             ref="rippleEffect"
           ></div>
           <ArticleItem
-            v-for="(article, index) in articles"
+            v-for="(article, index) in dataStore.articles"
             :key="index"
             class="my-2 sm:my-4"
-            :title="article.title"
-            :date="article.date"
-            :categories="article.categories"
-            :content="article.content"
-            :free="article.free"
-            :slug="article.slug"
+            :data="article"
+            :allow-show-all="false"
           />
         </div>
       </div>
@@ -124,61 +125,11 @@ import CategoryItem from "@/components/CategoryItem.vue";
 import ArticleItem from "@/components/ArticleItem.vue";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { useDataStore } from "@/stores/useDataStore";
 
 const remainingHeight = ref<number | undefined>(0);
 const rootElement = ref<HTMLElement | null>(null);
-
-const categories = ref([
-  {
-    title: "物联网技能大赛知识预览",
-    description: "了解技能大赛笔记入口",
-    views: 4078,
-    articleCount: 15,
-    free: true,
-  },
-  {
-    title: "Element Plus 组件库学习",
-    description: "基于 Vue 3，面向设计师和开发者的组件库",
-    views: 41,
-    articleCount: 10,
-    free: true,
-  },
-  {
-    title: "Web全栈开发-企业解决方案",
-    description:
-      "在阅本专栏期刊之前，我强烈建议您有必要了解以下技术栈，以充分理解讲解内容意图，如有不明之处请加我好友咨询（备注来意）",
-    views: 9637,
-    articleCount: 20,
-    free: false,
-  },
-]);
-
-const articles = ref([
-  {
-    title: "JavaScript 对分组方法 `Object.groupBy()` 和 `Map.groupBy()`",
-    date: "2024 年 10 月 12 日",
-    categories: [],
-    content: "",
-    free: true,
-    slug: "javascript-groupby",
-  },
-  {
-    title: "尽情使用 AbortController（Don't Sleep on AbortController）",
-    date: "2024 年 9 月 29 日",
-    categories: [],
-    content: "",
-    free: true,
-    slug: "abortcontroller",
-  },
-  {
-    title: "React 19 更新精简纪要",
-    date: "2024 年 9 月 26 日",
-    categories: [],
-    content: "",
-    free: true,
-    slug: "react-19-update-summary",
-  },
-]);
+const dataStore = useDataStore();
 
 const isGridLayout = ref(true);
 function toggleLayout(value: boolean) {

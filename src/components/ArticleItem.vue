@@ -1,34 +1,40 @@
 <template>
   <article
     :class="
-      categories.length > 0 || content
+      allowShowAll
         ? ''
         : 'flex justify-between flex-col sm:flex-row items-start sm:items-center'
     "
   >
     <h3 class="font-medium text-gray-800 dark:text-gray-200">
-      <RouterLink :to="`/blog/${slug}`" class="underline-style">
-        {{ title }}
+      <RouterLink :to="`/blog/${data.slug}`" class="underline-style">
+        {{ data.title }}
       </RouterLink>
     </h3>
     <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">
-      {{ date }}
-      <span v-if="categories.length > 0">
+      {{ data.date }}
+      <span v-if="data.categories.length > 0 && allowShowAll">
         <span
-          v-for="(category, categoryIndex) in categories"
+          v-for="(category, categoryIndex) in data.categories"
           class="mx-1 text-gray-500 dark:text-gray-400"
           :key="categoryIndex"
         >
           <RouterLink :to="`/category/${category}`">
-            <Badge class="badge-base" :class="free ? 'badge' : 'badge-pro'">
+            <Badge
+              class="badge-base"
+              :class="data.free ? 'badge' : 'badge-pro'"
+            >
               {{ category }}
             </Badge>
           </RouterLink>
         </span>
       </span>
     </p>
-    <p v-if="content" class="mt-4 text-gray-600 dark:text-gray-400">
-      {{ content }}
+    <p
+      v-if="data.content && allowShowAll"
+      class="mt-4 text-gray-600 dark:text-gray-400"
+    >
+      {{ data.content }}
     </p>
   </article>
 </template>
@@ -37,12 +43,15 @@ import { Badge } from "@/components/ui/badge";
 import { RouterLink } from "vue-router";
 
 const props = defineProps<{
-  title: string;
-  date: string;
-  categories: string[];
-  content: string;
-  free: boolean;
-  slug: string;
+  data: {
+    title: string;
+    date: string;
+    categories: string[];
+    content: string;
+    free: boolean;
+    slug: string;
+  };
+  allowShowAll: boolean;
 }>();
 </script>
 <style scoped>
