@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="isVisible"
-    class="absolute top-0 inset-x-0 w-full h-1 bg-gray-200 dark:bg-gray-800"
+    class="z-50 fixed top-0 inset-x-0 w-full h-1 bg-gray-200 dark:bg-gray-800"
   >
     <div
       class="h-full bg-gradient-to-r from-blue-500 to-green-500 dark:from-blue-700 dark:to-green-700 transition-all duration-500 ease-out"

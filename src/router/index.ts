@@ -4,6 +4,9 @@ import RootView from "@/views/RootView.vue";
 import { useStaticMarkdownLoader } from "@/composables/useStaticMarkdownLoader";
 import meMarkdown from "@/content/base/me.md?raw";
 import { useProgressStore } from "@/stores/progress";
+import { useDataStore } from "@/stores/useDataStore";
+import { useGlobMarkdownLoader } from "@/composables/useGlobMarkdownLoader";
+import { nextTick } from "vue";
 
 const routes = [
   {
@@ -48,9 +51,39 @@ const routes = [
     component: () => import("@/views/category/CategoryDetail.vue"),
   },
   {
-    path: "/blog/:slug",
+    path: "/blog/:prefix/:slug",
     name: "Blog",
     component: () => import("@/views/BlogView.vue"),
+    beforeEnter: async (
+      to: RouteLocationNormalized,
+      from: RouteLocationNormalized,
+      next: NavigationGuardNext,
+    ) => {
+      const progressStore = useProgressStore();
+      const dataStore = useDataStore();
+      const { loadMarkdown, htmlContent } = useGlobMarkdownLoader();
+      progressStore.setProgress(0);
+
+      const { prefix, slug } = to.params;
+      const markdownPath = dataStore.findArticlePath(
+        Array.isArray(prefix) ? prefix[0] : prefix,
+        Array.isArray(slug) ? slug[0] : slug,
+      );
+      progressStore.setProgress(0);
+
+      await nextTick();
+
+      if (markdownPath) {
+        await loadMarkdown(markdownPath, (progress: number) => {
+          progressStore.setProgress(progress);
+        });
+
+        to.params.htmlContent = htmlContent.value;
+        next();
+      } else {
+        next(false); // or redirect to a 404 page
+      }
+    },
   },
   {
     path: "/work",

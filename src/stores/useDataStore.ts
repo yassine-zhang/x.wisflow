@@ -93,7 +93,7 @@ export const useDataStore = defineStore("dataStore", () => {
       company: "众安保险",
       date: "8月2020 - 7月2021",
       content:
-        "该项目由众安保险公司提供，结了互联网保险和医疗服务，涵盖在线图文问诊、视频问诊、医生在线开处��以及患者在线购药。项目不仅与众安保险的健康险业务无缝集成，还支持与云闪付等不同渠道的对接。",
+        "该项目由众安保险公司提供，结了互联网保险和医疗服务，涵盖在线图文问诊、视频问诊、医生在线开处方以及患者在线购药。项目不仅与众安保险的健康险业务无缝集成，还支持与云闪付等不同渠道的对���。",
     },
     {
       title: "高级前端工程师",
@@ -120,5 +120,20 @@ export const useDataStore = defineStore("dataStore", () => {
     projects: 2,
   });
 
-  return { profile, categories, articles, experiences, projects, sliceCounts };
+  function findArticlePath(prefix: string, slug: string): string | null {
+    const article = articles.value.find(
+      (article) => article.prefix === prefix && article.slug === slug,
+    );
+    return article ? article.path : null;
+  }
+
+  return {
+    profile,
+    categories,
+    articles,
+    experiences,
+    projects,
+    sliceCounts,
+    findArticlePath,
+  };
 });
