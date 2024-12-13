@@ -61,7 +61,7 @@
         </RouterLink>
       </header>
       <ArticleItem
-        v-for="(article, index) in dataStore.articles.slice(
+        v-for="(article, index) in dataStore.sortedArticles.slice(
           0,
           dataStore.sliceCounts.articles,
         )"
@@ -149,6 +149,7 @@ onMounted(() => {
       });
     });
   }
+  dataStore.sortArticlesByDate();
 });
 
 const router = useRouter();

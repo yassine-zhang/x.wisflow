@@ -105,7 +105,7 @@
           <ArticleItem
             v-for="(article, index) in filteredArticles(category.title).slice(
               0,
-              5,
+              dataStore.sliceCounts.articles,
             )"
             :key="index"
             class="my-2 sm:my-4"

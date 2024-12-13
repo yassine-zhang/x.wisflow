@@ -1,4 +1,3 @@
-import "modern-css-reset/src/reset.css";
 import "./assets/main.css";
 
 import { createApp } from "vue";

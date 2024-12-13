@@ -126,3 +126,9 @@ html.dark {
 html.light {
   color-scheme: light;
 }
+
+/* markdown模式下ol的样式 */
+.markdown-body ol,
+.markdown-body ul {
+  list-style-type: auto;
+}

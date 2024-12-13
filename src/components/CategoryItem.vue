@@ -10,10 +10,10 @@
       <span class="text-gray-800 dark:text-gray-200">{{ formattedViews }}</span>
       次看过
     </div>
-    <div
-      v-if="allowShowAll"
+    <Badge
       class="badge-base"
-      :class="data.free ? 'badge' : 'badge-pro'"
+      v-if="allowShowAll"
+      :variant="data.free ? 'secondary' : 'default'"
     >
       <Icon
         icon="mdi:book-open-page-variant"
@@ -22,7 +22,7 @@
         height="10"
       />
       <span class="text-xs">{{ data.articleCount }} 篇</span>
-    </div>
+    </Badge>
   </div>
 </template>
 
@@ -31,6 +31,7 @@ import { Icon } from "@iconify/vue";
 import { useRouter } from "vue-router";
 import { computed } from "vue";
 import type { Category } from "@/types/dataTypes";
+import { Badge } from "@/components/ui/badge";
 
 const props = defineProps<{
   data: Category;

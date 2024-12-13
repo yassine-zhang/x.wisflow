@@ -231,6 +231,7 @@ html.light {
 }
 
 .markdown-body img {
+  margin: 0.5rem 0;
   border-style: none;
   max-width: 100%;
   box-sizing: content-box;
