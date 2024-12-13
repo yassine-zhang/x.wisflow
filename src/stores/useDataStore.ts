@@ -8,6 +8,7 @@ import type {
   Project,
   SliceCounts,
 } from "../types/dataTypes";
+import dayjs from "dayjs";
 
 export const useDataStore = defineStore("dataStore", () => {
   const profile = ref<Profile>({
@@ -58,7 +59,7 @@ export const useDataStore = defineStore("dataStore", () => {
   const articles = ref<Article[]>([
     {
       title: "第zero期、当前专栏涉及技术要点",
-      date: "2024 年 8 月 10 日",
+      date: "2023-08-10 12:45:39",
       categories: ["Web全栈开发-企业解决方案"],
       content:
         "在查阅本专栏期刊之前，我强烈建议您有必要了解以下技术栈，以充分理解讲解内容意图，如有不明之处请加我好友咨询（备注来意）",
@@ -69,7 +70,7 @@ export const useDataStore = defineStore("dataStore", () => {
     },
     {
       title: "第一期、使用GPT-SoVITS从训练数据到推理使用",
-      date: "2024 年 7 月 11 日",
+      date: "2023-07-11 08:21:06",
       categories: ["Web全栈开发-企业解决方案"],
       content:
         "GPT-SoVITS 是一种基于 AI 技术的工具，要应用于 语音转换（Voice Conversion, VC） 场景。具体来说，它结合了 GPT 的文本处理能力和 SoVITS（Soft Voice Identity Transfer System） 的语音转换技术，用于高质量的语音合成和特定声音风格的转换。",
@@ -78,7 +79,69 @@ export const useDataStore = defineStore("dataStore", () => {
       prefix: "enterprise-solution",
       path: "/src/content/enterprise-solution/gpt-sovits-from-training-to-inference.md",
     },
+    {
+      title: "第五期、Docker Registry私有仓库攻略",
+      date: "2023-08-02 07:14:26",
+      categories: ["Web全栈开发-企业解决方案"],
+      content:
+        "在日常使用 Docker 构建、推送、拉取镜像的时候为了隐私以及安全性考虑我们通常会在服务器上部署 registry 镜像容器，它拥有 dockerhub 的基础仓库服务功能。",
+      free: false,
+      slug: "docker-registry-private-repository-strategy",
+      prefix: "enterprise-solution",
+      path: "/src/content/enterprise-solution/docker-registry-private-repository-strategy.md",
+    },
+    {
+      title: "第七期：Nginx反向代理HTTPS API服务",
+      date: "2023-08-14 09:14:51",
+      categories: ["Web全栈开发-企业解决方案"],
+      content: "# 1. 安装 Nginx```bash# 在宿主机创建用于挂载的目录文件",
+      free: false,
+      slug: "nginx-reverse-proxy-https-api-service",
+      prefix: "enterprise-solution",
+      path: "/src/content/enterprise-solution/nginx-reverse-proxy-https-api-service.md",
+    },
+    {
+      title: "git commit 规则",
+      date: "2023-12-09 13:37:59",
+      categories: ["DevOps 开发运维"],
+      content:
+        "如下图所示，是我推送到 github 的信息，当提交的信息过于细碎时可以按照这个格式写。",
+      free: true,
+      slug: "git-commit-rules",
+      prefix: "dev-ops",
+      path: "/src/content/dev-ops/git-commit-rules.md",
+    },
+    {
+      title: "网格背景应用",
+      date: "2023-12-07 09:58:26",
+      categories: ["CSS 学习"],
+      content:
+        "## 案例相关信息 网站：https://voidzero.dev/， Even You 的创业公司",
+      free: true,
+      slug: "grid-background-application",
+      prefix: "css-study",
+      path: "/src/content/css-study/grid-background-application.md",
+    },
+    {
+      title: "线性渐变背景与文字应用",
+      date: "2023-11-18 18:51:69",
+      categories: ["CSS 学习"],
+      content:
+        "可以看到他的背景有种黑里透白的感觉，而且文字也都采用了 linear-gradient，尽显高级感。",
+      free: true,
+      slug: "linear-gradient-background-and-text-application",
+      prefix: "css-study",
+      path: "/src/content/css-study/linear-gradient-background-and-text-application.md",
+    },
   ]);
+
+  const sortedArticles = ref<Article[]>([]);
+
+  function sortArticlesByDate() {
+    sortedArticles.value = articles.value.sort(
+      (a, b) => dayjs(b.date).unix() - dayjs(a.date).unix(),
+    );
+  }
 
   const experiences = ref<Experience[]>([
     {
@@ -93,7 +156,7 @@ export const useDataStore = defineStore("dataStore", () => {
       company: "众安保险",
       date: "8月2020 - 7月2021",
       content:
-        "该项目由众安保险公司提供，结了互联网保险和医疗服务，涵盖在线图文问诊、视频问诊、医生在线开处方以及患者在线购药。项目不仅与众安保险的健康险业务无缝集成，还支持与云闪付等不同渠道的对���。",
+        "该项目由众安保险公司提供，结了互联网保险和医疗服务，涵盖在线图文问诊、视频问诊、医生在线开处方以及患者在线购药。项目不仅与众安保险的健康险业务无缝集成，还支持与云闪付等不同渠道的对。",
     },
     {
       title: "高级前端工程师",
@@ -131,9 +194,11 @@ export const useDataStore = defineStore("dataStore", () => {
     profile,
     categories,
     articles,
+    sortedArticles,
     experiences,
     projects,
     sliceCounts,
     findArticlePath,
+    sortArticlesByDate,
   };
 });
