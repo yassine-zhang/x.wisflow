@@ -65,7 +65,7 @@ watch(route, () => {
     </button>
     <div class="w-full flex justify-between items-center mb-12 mt-6">
       <div class="text-gray-500 dark:text-gray-400">
-        © {{ currentYear }} CoolCat
+        © {{ currentYear }} 济宁若森软件开发中心
       </div>
       <div class="flex items-center space-x-4">
         <a href="#" class="text-gray-500 dark:text-gray-400 underline-style"

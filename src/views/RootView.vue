@@ -1,7 +1,7 @@
 <template>
   <section>
     <header>
-      <p class="text-gray-600 dark:text-gray-400">CoolCat</p>
+      <p class="text-gray-600 dark:text-gray-400">济宁若森软件开发中心</p>
       <h1 class="font-bold text-gray-800 dark:text-gray-200">
         {{ dataStore.profile.greeting }}
       </h1>
@@ -35,7 +35,7 @@
         </button>
       </header>
 
-      <div class="flex flex-wrap gap-4 mt-4">
+      <div class="flex flex-wrap gap-2 sm:gap-4 mt-4">
         <CategoryItem
           v-for="(category, index) in dataStore.categories.slice(
             0,

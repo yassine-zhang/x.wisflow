@@ -15,7 +15,7 @@ export const useDataStore = defineStore("dataStore", () => {
     name: "张永鑫",
     greeting: "Hi, I'm 张永鑫 👋",
     description:
-      "Vue3 + TypeScript + Bun 全栈开发工程师，<br/>热爱前沿 AI 技术，享受AI赋能带来的便利。日常生活中，我喜欢骑单车 🚴、健身🏋️。",
+      "全栈开发工程师，专注于 Vue3、TypeScript 和 Bun 技术栈。<br/>对前沿人工智能技术充满热情，乐于探索 AI 技术所带来的便利。在日常生活中，我喜欢骑自行车🚴和健身🏋️，以保持积极的生活方式。",
     recordDate: "2024 年 12 月 11 日，记录 x.wisflow.cn。",
     socialIcons: [
       {
@@ -41,6 +41,7 @@ export const useDataStore = defineStore("dataStore", () => {
       articleCount: 4,
       free: false,
       words: 0,
+      iconName: "arcticons:ip-webcam",
     },
     {
       title: "DevOps 开发运维",
@@ -50,6 +51,7 @@ export const useDataStore = defineStore("dataStore", () => {
       articleCount: 1,
       free: true,
       words: 0,
+      iconName: "arcticons:daily-dev",
     },
     {
       title: "CSS 学习",
@@ -59,6 +61,7 @@ export const useDataStore = defineStore("dataStore", () => {
       articleCount: 2,
       free: true,
       words: 0,
+      iconName: "arcticons:learn-css",
     },
   ]);
 

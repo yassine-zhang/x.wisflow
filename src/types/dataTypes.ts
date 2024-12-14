@@ -23,6 +23,7 @@ export interface Category {
   articleCount: number;
   free: boolean;
   words: number;
+  iconName: string;
 }
 
 // 定义 Article 类型
