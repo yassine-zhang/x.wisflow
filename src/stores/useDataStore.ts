@@ -59,7 +59,7 @@ export const useDataStore = defineStore("dataStore", () => {
   const articles = ref<Article[]>([
     {
       title: "第zero期、当前专栏涉及技术要点",
-      date: "2023-08-10 12:45:39",
+      date: "2024-08-10 12:45:39",
       categories: ["Web全栈开发-企业解决方案"],
       content:
         "在查阅本专栏期刊之前，我强烈建议您有必要了解以下技术栈，以充分理解讲解内容意图，如有不明之处请加我好友咨询（备注来意）",
@@ -70,7 +70,7 @@ export const useDataStore = defineStore("dataStore", () => {
     },
     {
       title: "第一期、使用GPT-SoVITS从训练数据到推理使用",
-      date: "2023-07-11 08:21:06",
+      date: "2024-07-11 08:21:06",
       categories: ["Web全栈开发-企业解决方案"],
       content:
         "GPT-SoVITS 是一种基于 AI 技术的工具，要应用于 语音转换（Voice Conversion, VC） 场景。具体来说，它结合了 GPT 的文本处理能力和 SoVITS（Soft Voice Identity Transfer System） 的语音转换技术，用于高质量的语音合成和特定声音风格的转换。",
@@ -81,7 +81,7 @@ export const useDataStore = defineStore("dataStore", () => {
     },
     {
       title: "第五期、Docker Registry私有仓库攻略",
-      date: "2023-08-02 07:14:26",
+      date: "2024-08-02 07:14:26",
       categories: ["Web全栈开发-企业解决方案"],
       content:
         "在日常使用 Docker 构建、推送、拉取镜像的时候为了隐私以及安全性考虑我们通常会在服务器上部署 registry 镜像容器，它拥有 dockerhub 的基础仓库服务功能。",
@@ -92,9 +92,9 @@ export const useDataStore = defineStore("dataStore", () => {
     },
     {
       title: "第七期：Nginx反向代理HTTPS API服务",
-      date: "2023-08-14 09:14:51",
+      date: "2024-08-14 09:14:51",
       categories: ["Web全栈开发-企业解决方案"],
-      content: "# 1. 安装 Nginx```bash# 在宿主机创建用于挂载的目录文件",
+      content: "稍微与http反代有点不一样的点，你值得学习！",
       free: false,
       slug: "nginx-reverse-proxy-https-api-service",
       prefix: "enterprise-solution",
@@ -102,7 +102,7 @@ export const useDataStore = defineStore("dataStore", () => {
     },
     {
       title: "git commit 规则",
-      date: "2023-12-09 13:37:59",
+      date: "2024-12-09 13:37:59",
       categories: ["DevOps 开发运维"],
       content:
         "如下图所示，是我推送到 github 的信息，当提交的信息过于细碎时可以按照这个格式写。",
@@ -113,10 +113,10 @@ export const useDataStore = defineStore("dataStore", () => {
     },
     {
       title: "网格背景应用",
-      date: "2023-12-07 09:58:26",
+      date: "2024-12-07 09:58:26",
       categories: ["CSS 学习"],
       content:
-        "## 案例相关信息 网站：https://voidzero.dev/， Even You 的创业公司",
+        "在 Even You 创业公司的网站 voidzero 中看到的网格平铺背景的实现思路。",
       free: true,
       slug: "grid-background-application",
       prefix: "css-study",
@@ -124,10 +124,9 @@ export const useDataStore = defineStore("dataStore", () => {
     },
     {
       title: "线性渐变背景与文字应用",
-      date: "2023-11-18 18:51:69",
+      date: "2024-11-18 18:51:69",
       categories: ["CSS 学习"],
-      content:
-        "可以看到他的背景有种黑里透白的感觉，而且文字也都采用了 linear-gradient，尽显高级感。",
+      content: "linear-gradient 高级感指南",
       free: true,
       slug: "linear-gradient-background-and-text-application",
       prefix: "css-study",
@@ -183,11 +182,11 @@ export const useDataStore = defineStore("dataStore", () => {
     projects: 2,
   });
 
-  function findArticlePath(prefix: string, slug: string): string | null {
+  function findArticleData(prefix: string, slug: string): Article | undefined {
     const article = articles.value.find(
       (article) => article.prefix === prefix && article.slug === slug,
     );
-    return article ? article.path : null;
+    return article;
   }
 
   return {
@@ -198,7 +197,7 @@ export const useDataStore = defineStore("dataStore", () => {
     experiences,
     projects,
     sliceCounts,
-    findArticlePath,
+    findArticleData,
     sortArticlesByDate,
   };
 });

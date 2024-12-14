@@ -1,5 +1,14 @@
 <template>
   <div ref="rootElement" :style="{ marginBottom: remainingHeight + 'px' }">
+    <p class="text-gray-700 dark:text-gray-300">
+      {{ route.params.date }} · 阅读 {{ route.params.readingTime }} 分钟
+    </p>
+    <h1 class="mt-2 font-semibold text-4xl dark:text-white">
+      {{ route.params.title }}
+    </h1>
+    <p class="my-6 text-gray-700 dark:text-gray-300">
+      {{ route.params.content }}
+    </p>
     <div v-html="htmlContent" class="markdown-body"></div>
     <CdButton></CdButton>
   </div>

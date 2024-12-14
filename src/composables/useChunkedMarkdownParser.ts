@@ -25,6 +25,9 @@ export function useChunkedMarkdownParser() {
 
       const progress = ((i + 1) / totalChunks) * 100;
       updateProgress(progress); // 使用传入的函数更新进度
+
+      // 添加延迟以减缓进度条加载速度
+      await new Promise((resolve) => setTimeout(resolve, 20)); // 20毫秒的延迟
     }
 
     return parsedContent;
