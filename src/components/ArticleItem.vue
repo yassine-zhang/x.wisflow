@@ -22,7 +22,9 @@
           class="mx-1 text-gray-500 dark:text-gray-400"
           :key="categoryIndex"
         >
-          <RouterLink :to="`/category/${category}`">
+          <RouterLink
+            :to="`/category/${dataStore.findCategoryByTitle(category)?.name}`"
+          >
             <Badge :variant="data.free ? 'secondary' : 'default'">
               {{ category }}
             </Badge>
@@ -43,7 +45,9 @@ import { Badge } from "@/components/ui/badge";
 import { RouterLink } from "vue-router";
 import type { Article } from "@/types/dataTypes";
 import dayjs from "dayjs";
+import { useDataStore } from "@/stores/useDataStore";
 
+const dataStore = useDataStore();
 const props = defineProps<{
   data: Article;
   allowShowAll: boolean;

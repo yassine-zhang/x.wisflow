@@ -15,7 +15,7 @@ export const useDataStore = defineStore("dataStore", () => {
     name: "张永鑫",
     greeting: "Hi, I'm 张永鑫 👋",
     description:
-      "NodeJS/Bun 全栈开发工程师，热爱前沿 AI 技术。日常生活中，我喜欢骑单车 🚴、健身🏋️。",
+      "Vue3 + TypeScript + Bun 全栈开发工程师，<br/>热爱前沿 AI 技术，享受AI赋能带来的便利。日常生活中，我喜欢骑单车 🚴、健身🏋️。",
     recordDate: "2024 年 12 月 11 日，记录 x.wisflow.cn。",
     socialIcons: [
       {
@@ -35,24 +35,30 @@ export const useDataStore = defineStore("dataStore", () => {
   const categories = ref<Category[]>([
     {
       title: "Web全栈开发-企业解决方案",
+      name: "enterprise-solution",
       description: "实际开发业务中有用的新型前沿技术解决方案",
       views: 4078,
       articleCount: 4,
       free: false,
+      words: 0,
     },
     {
       title: "DevOps 开发运维",
+      name: "dev-ops",
       description: "记录运维开发中遇到的问题和解决方案",
       views: 739,
       articleCount: 1,
       free: true,
+      words: 0,
     },
     {
       title: "CSS 学习",
+      name: "css-study",
       description: "记录 CSS 学习笔记",
       views: 391,
       articleCount: 2,
       free: true,
+      words: 0,
     },
   ]);
 
@@ -67,6 +73,7 @@ export const useDataStore = defineStore("dataStore", () => {
       slug: "zero-technical-point",
       prefix: "enterprise-solution",
       path: "/src/content/enterprise-solution/zero-technical-point.md",
+      words: 628,
     },
     {
       title: "第一期、使用GPT-SoVITS从训练数据到推理使用",
@@ -78,6 +85,7 @@ export const useDataStore = defineStore("dataStore", () => {
       slug: "gpt-sovits-from-training-to-inference",
       prefix: "enterprise-solution",
       path: "/src/content/enterprise-solution/gpt-sovits-from-training-to-inference.md",
+      words: 3965,
     },
     {
       title: "第五期、Docker Registry私有仓库攻略",
@@ -89,6 +97,7 @@ export const useDataStore = defineStore("dataStore", () => {
       slug: "docker-registry-private-repository-strategy",
       prefix: "enterprise-solution",
       path: "/src/content/enterprise-solution/docker-registry-private-repository-strategy.md",
+      words: 3321,
     },
     {
       title: "第七期：Nginx反向代理HTTPS API服务",
@@ -99,6 +108,7 @@ export const useDataStore = defineStore("dataStore", () => {
       slug: "nginx-reverse-proxy-https-api-service",
       prefix: "enterprise-solution",
       path: "/src/content/enterprise-solution/nginx-reverse-proxy-https-api-service.md",
+      words: 2446,
     },
     {
       title: "git commit 规则",
@@ -110,6 +120,7 @@ export const useDataStore = defineStore("dataStore", () => {
       slug: "git-commit-rules",
       prefix: "dev-ops",
       path: "/src/content/dev-ops/git-commit-rules.md",
+      words: 602,
     },
     {
       title: "网格背景应用",
@@ -121,6 +132,7 @@ export const useDataStore = defineStore("dataStore", () => {
       slug: "grid-background-application",
       prefix: "css-study",
       path: "/src/content/css-study/grid-background-application.md",
+      words: 269,
     },
     {
       title: "线性渐变背景与文字应用",
@@ -131,6 +143,7 @@ export const useDataStore = defineStore("dataStore", () => {
       slug: "linear-gradient-background-and-text-application",
       prefix: "css-study",
       path: "/src/content/css-study/linear-gradient-background-and-text-application.md",
+      words: 538,
     },
   ]);
 
@@ -155,7 +168,7 @@ export const useDataStore = defineStore("dataStore", () => {
       company: "众安保险",
       date: "8月2020 - 7月2021",
       content:
-        "该项目由众安保险公司提供，结了互联网保险和医疗服务，涵盖在线图文问诊、视频问诊、医生在线开处方以及患者在线购药。项目不仅与众安保险的健康险业务无缝集成，还支持与云闪付等不同渠道的对。",
+        "该项目由众安保险公司提供，结了互联网保险和医疗服务，涵盖在线图文问诊、视频问诊、医��在线开处方以及患者在线购药。项目不仅与众安保险的健康险业务无缝集成，还支持与云闪付等不同渠道的对。",
     },
     {
       title: "高级前端工程师",
@@ -189,6 +202,27 @@ export const useDataStore = defineStore("dataStore", () => {
     return article;
   }
 
+  function filterArticlesByCategory(categoryName: string) {
+    return articles.value.filter((article) => article.prefix === categoryName);
+  }
+
+  function findCategoryByName(name: string): Category | undefined {
+    return categories.value.find((category) => category.name === name);
+  }
+
+  function findCategoryByTitle(title: string): Category | undefined {
+    return categories.value.find((category) => category.title === title);
+  }
+
+  function calculateWordsInCategories() {
+    categories.value.forEach((category) => {
+      const totalWords = articles.value
+        .filter((article) => article.prefix === category.name)
+        .reduce((sum, article) => sum + article.words, 0);
+      category.words = totalWords; // 更新对应类别的 words
+    });
+  }
+
   return {
     profile,
     categories,
@@ -199,5 +233,9 @@ export const useDataStore = defineStore("dataStore", () => {
     sliceCounts,
     findArticleData,
     sortArticlesByDate,
+    filterArticlesByCategory,
+    findCategoryByName,
+    findCategoryByTitle,
+    calculateWordsInCategories,
   };
 });

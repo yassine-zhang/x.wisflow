@@ -17,10 +17,12 @@ export interface SocialIcon {
 // 定义 Category 类型
 export interface Category {
   title: string;
+  name: string;
   description: string;
   views: number;
   articleCount: number;
   free: boolean;
+  words: number;
 }
 
 // 定义 Article 类型
@@ -33,6 +35,7 @@ export interface Article {
   slug: string;
   prefix: string;
   path: string;
+  words: number;
 }
 
 // 定义 Experience 类型

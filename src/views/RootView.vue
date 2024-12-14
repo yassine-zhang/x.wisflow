@@ -5,10 +5,11 @@
       <h1 class="font-bold text-gray-800 dark:text-gray-200">
         {{ dataStore.profile.greeting }}
       </h1>
-      <p class="mt-3 text-gray-600 dark:text-gray-400">
-        {{ dataStore.profile.description }}
-      </p>
-      <p class="mt-2 text-gray-500 dark:text-gray-300">
+      <p
+        v-html="dataStore.profile.description"
+        class="mt-3 text-gray-600 dark:text-gray-400"
+      ></p>
+      <p class="mt-2 text-gray-500 dark:text-gray-300 leading-6">
         {{ dataStore.profile.recordDate }}
       </p>
       <div ref="socialIconsParent" class="flex gap-2 mt-4">
@@ -149,7 +150,6 @@ onMounted(() => {
       });
     });
   }
-  dataStore.sortArticlesByDate();
 });
 
 const router = useRouter();

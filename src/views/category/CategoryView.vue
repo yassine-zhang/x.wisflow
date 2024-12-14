@@ -54,7 +54,10 @@
     </div>
 
     <!-- 网格布局专栏 -->
-    <div v-if="isGridLayout" class="grid grid-cols-1 sm:grid-cols-3 gap-2 mt-3">
+    <div
+      v-if="isGridLayout"
+      class="w-full grid grid-cols-1 sm:grid-cols-3 gap-2 mt-3"
+    >
       <div
         class="cursor-pointer rounded-lg border-dashed border-2 border-gray-300 dark:border-gray-500 hover:border-black dark:hover:border-white flex flex-col items-center justify-center p-4 transition-style"
       >
@@ -83,12 +86,14 @@
             <h3 class="text-md font-medium">{{ category.title }}</h3>
             <Badge variant="outline"> {{ category.articleCount }} </Badge>
           </div>
-          <Button
-            variant="outline"
-            class="font-normal scale-90 px-2 py-1 h-8 gap-1"
-          >
-            更多 <Icon icon="tabler:chevron-right" class="w-4 h-4" />
-          </Button>
+          <RouterLink :to="`/category/${category.name}`">
+            <Button
+              variant="outline"
+              class="font-normal scale-90 px-2 py-1 h-8 gap-1"
+            >
+              更多 <Icon icon="tabler:chevron-right" class="w-4 h-4" />
+            </Button>
+          </RouterLink>
         </div>
         <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">
           {{ category.description }}

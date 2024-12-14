@@ -1,5 +1,8 @@
 <template>
-  <div class="column-item transition-style" @click="navigateToColumn(index)">
+  <div
+    class="column-item transition-style"
+    @click="navigateToColumn(data.name)"
+  >
     <div>
       <h3 class="font-medium">{{ data.title }}</h3>
       <p class="mt-0.5 text-sm text-gray-500 dark:text-gray-400 truncate">
@@ -29,9 +32,9 @@
 <script setup lang="ts">
 import { Icon } from "@iconify/vue";
 import { useRouter } from "vue-router";
-import { computed } from "vue";
 import type { Category } from "@/types/dataTypes";
 import { Badge } from "@/components/ui/badge";
+import { useFormattedViews } from "@/composables/useFormattedViews";
 
 const props = defineProps<{
   data: Category;
@@ -41,18 +44,12 @@ const props = defineProps<{
 
 const router = useRouter();
 
-function navigateToColumn(index: number) {
+function navigateToColumn(index: string) {
   const categoryId = `${index}`;
   router.push(`/category/${categoryId}`);
 }
 
-const formattedViews = computed(() => {
-  const views = props.data.views;
-  if (views >= 1000) {
-    return (views / 1000).toFixed(views % 1000 === 0 ? 0 : 2) + "k";
-  }
-  return views.toString();
-});
+const formattedViews = useFormattedViews(props.data.views);
 </script>
 
 <style scoped>

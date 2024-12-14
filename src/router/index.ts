@@ -1,6 +1,10 @@
 import { createRouter, createWebHistory } from "vue-router";
 import RootView from "@/views/RootView.vue";
-import { meBeforeEnter, blogBeforeEnter } from "@/router/guards"; // 引入抽象的函数
+import {
+  meBeforeEnter,
+  blogBeforeEnter,
+  initializeStoreGuard,
+} from "@/router/guards";
 
 const routes = [
   {
@@ -49,5 +53,7 @@ const router = createRouter({
     return { top: 0 };
   },
 });
+
+router.beforeEach(initializeStoreGuard);
 
 export default router;

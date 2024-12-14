@@ -60,3 +60,15 @@ export const blogBeforeEnter = async (
     next(false); // or redirect to a 404 page
   }
 };
+
+export const initializeStoreGuard = (
+  to: RouteLocationNormalized,
+  from: RouteLocationNormalized,
+  next: NavigationGuardNext,
+) => {
+  const store = useDataStore();
+  store.sortArticlesByDate();
+  store.calculateWordsInCategories();
+
+  next();
+};
