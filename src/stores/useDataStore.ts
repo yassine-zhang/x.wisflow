@@ -15,7 +15,7 @@ export const useDataStore = defineStore("dataStore", () => {
     name: "张永鑫",
     greeting: "Hi, I'm 张永鑫 👋",
     description:
-      "全栈开发工程师，专注于 Vue3、TypeScript 和 Bun 技术栈。<br/>对前沿人工智能技术充满热情，乐于探索 AI 技术所带来的便利。在日常生活中，我喜欢骑自行车🚴和健身🏋️，以保持积极的生活方式。",
+      "全栈开发工程师，专注于 Vue3、TypeScript 和 Bun 技术栈。对前沿人工智能技术充满热情，乐于探索 AI 技术所带来的便利。在日常生活中，我喜欢骑自行车🚴和健身🏋️，以保持积极的生活方式。",
     recordDate: "2024 年 12 月 11 日，记录 x.wisflow.cn。",
     socialIcons: [
       {

@@ -59,7 +59,7 @@
       class="w-full grid grid-cols-1 sm:grid-cols-3 gap-2 mt-3"
     >
       <div
-        class="cursor-pointer rounded-lg border-dashed border-2 border-gray-300 dark:border-gray-500 hover:border-black dark:hover:border-white flex flex-col items-center justify-center p-4 transition-style"
+        class="cursor-pointer rounded-md border-dashed border-2 border-gray-300 dark:border-gray-500 hover:border-black dark:hover:border-white flex flex-col items-center justify-center p-4 transition-style"
       >
         <Icon icon="mi:add" width="24" height="24" />
         <span class="text-sm">新建专栏</span>

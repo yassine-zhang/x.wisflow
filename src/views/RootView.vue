@@ -1,14 +1,13 @@
 <template>
   <section>
-    <header>
-      <p class="text-gray-600 dark:text-gray-400">济宁若森软件开发中心</p>
+    <header class="grid-background p-4 rounded-md">
+      <p class="text-gray-600 dark:text-gray-400">济宁市若森软件开发中心</p>
       <h1 class="font-bold text-gray-800 dark:text-gray-200">
         {{ dataStore.profile.greeting }}
       </h1>
-      <p
-        v-html="dataStore.profile.description"
-        class="mt-3 text-gray-600 dark:text-gray-400"
-      ></p>
+      <p class="mt-3 text-gray-600 dark:text-gray-400">
+        {{ dataStore.profile.description }}
+      </p>
       <p class="mt-2 text-gray-500 dark:text-gray-300 leading-6">
         {{ dataStore.profile.recordDate }}
       </p>
@@ -165,5 +164,16 @@ function navigateToProjects() {
 <style scoped>
 .item-outline {
   @apply mt-16 flex flex-col;
+}
+
+.grid-background {
+  background-size: 14px 14px;
+  background-image: linear-gradient(to right, #f6f6f6 1px, transparent 1px),
+    linear-gradient(to bottom, #f6f6f6 1px, transparent 1px);
+}
+
+.dark .grid-background {
+  background-image: linear-gradient(to right, #060f2c 1px, transparent 1px),
+    linear-gradient(to bottom, #060f2c 1px, transparent 1px);
 }
 </style>

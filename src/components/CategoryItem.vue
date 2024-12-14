@@ -67,7 +67,7 @@ const isHovered = ref(false); // 用于跟踪鼠标是否悬停
 
 <style scoped>
 .column-item {
-  @apply w-full sm:max-w-none overflow-hidden flex flex-col justify-between cursor-pointer p-5 h-32 border rounded-lg shadow-md scale-100 hover:scale-[101%];
+  @apply w-full sm:max-w-none overflow-hidden flex flex-col justify-between cursor-pointer p-5 h-32 border rounded-md shadow-md scale-100 hover:scale-[101%];
   @apply border-2 border-gray-300 dark:border-gray-500 hover:border-gray-900 dark:hover:border-gray-100;
   box-shadow: 6px 6px 8px rgba(58, 61, 74, 0.02);
   position: relative; /* 添加相对定位以便绝对定位子元素 */
