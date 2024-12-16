@@ -4,10 +4,12 @@
     ref="rootElement"
     :style="{ marginBottom: remainingHeight + 'px' }"
   >
-    <h1 class="font-semibold text-3xl mb-1 text-gray-800 dark:text-gray-200">
+    <h1 class="font-medium text-3xl mb-1 text-gray-800 dark:text-gray-200">
       {{ categoryData?.title }}
     </h1>
-    <div class="flex gap-2 pl-1 mb-2 text-sm text-gray-500 dark:text-gray-400">
+    <div
+      class="flex items-center gap-2 sm:gap-4 pl-1 mb-2 text-sm text-gray-500 dark:text-gray-400"
+    >
       <p>
         <span class="highlight-indicator">{{
           useFormattedViews(categoryData?.articleCount || 0)
@@ -18,13 +20,23 @@
         <span class="highlight-indicator">{{
           useFormattedViews(categoryData?.views || 0)
         }}</span>
-        查阅
+        浏览
       </p>
-      <p>
+      <p class="flex items-center gap-1">
         <span class="highlight-indicator">{{
           useFormattedViews(categoryData?.words || 0)
         }}</span>
-        字数
+        字
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger
+              ><Icon icon="mingcute:warning-line" width="16" height="16"
+            /></TooltipTrigger>
+            <TooltipContent side="right">
+              <p>每天早上 8 点，系统会自动统计字数</p>
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
       </p>
     </div>
     <div class="pl-1 mb-8 text-md text-gray-500 dark:text-gray-400">
@@ -54,6 +66,13 @@ import { calculateRemainingHeight } from "@/utils/calculateRemainingHeight";
 import ArticleItem from "@/components/ArticleItem.vue";
 import { useDataStore } from "@/stores/useDataStore";
 import { useFormattedViews } from "@/composables/useFormattedViews";
+import { Icon } from "@iconify/vue/dist/iconify.js";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 const route = useRoute();
 const dataStore = useDataStore();
