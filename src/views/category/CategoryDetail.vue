@@ -28,7 +28,7 @@
         }}</span>
         字
         <TooltipProvider>
-          <Tooltip>
+          <Tooltip :delay-duration="200">
             <TooltipTrigger
               ><Icon icon="mingcute:warning-line" width="16" height="16"
             /></TooltipTrigger>

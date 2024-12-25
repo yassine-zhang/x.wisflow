@@ -125,7 +125,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, computed } from "vue";
+import { ref, onMounted, onUnmounted, computed, watch } from "vue";
 import { calculateRemainingHeight } from "@/utils/calculateRemainingHeight";
 import CdButton from "@/components/CdButton.vue";
 import { Icon } from "@iconify/vue";
@@ -217,6 +217,17 @@ const filteredArticles = computed(() => {
     );
   };
 });
+
+watch(
+  () => route.query.type,
+  (newType) => {
+    if (newType === "list") {
+      isGridLayout.value = false;
+    } else if (newType === "grid") {
+      isGridLayout.value = true;
+    }
+  },
+);
 
 onMounted(() => {
   const rootHeight = rootElement.value?.offsetHeight || 0;

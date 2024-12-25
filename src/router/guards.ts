@@ -7,6 +7,7 @@ import { nextTick } from "vue";
 import dayjs from "dayjs";
 import { calculateReadingTime } from "@/utils/readingTime";
 import meMarkdown from "@/content/base/me.md?raw";
+import { useNavigationStore } from "@/stores/useNavigationStore";
 
 export const meBeforeEnter = async (
   to: RouteLocationNormalized,
@@ -67,8 +68,14 @@ export const initializeStoreGuard = (
   next: NavigationGuardNext,
 ) => {
   const store = useDataStore();
+  const navigationStore = useNavigationStore();
+
+  // 初始化数据
   store.sortArticlesByDate();
   store.calculateWordsInCategories();
+
+  // 记录完整的路由信息
+  navigationStore.addToHistory(to);
 
   next();
 };
