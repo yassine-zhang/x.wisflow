@@ -84,13 +84,10 @@
         <div class="flex items-center justify-between gap-2 mt-4">
           <div class="flex items-center gap-2">
             <h3 class="text-md font-medium">{{ category.title }}</h3>
-            <Badge variant="outline"> {{ category.articleCount }} </Badge>
+            <Badge variant="secondary"> {{ category.articleCount }} </Badge>
           </div>
           <RouterLink :to="`/category/${category.name}`">
-            <Button
-              variant="outline"
-              class="font-normal scale-90 px-2 py-1 h-8 gap-1"
-            >
+            <Button variant="outline" class="font-normal scale-90 gap-1">
               更多 <Icon icon="tabler:chevron-right" class="w-4 h-4" />
             </Button>
           </RouterLink>

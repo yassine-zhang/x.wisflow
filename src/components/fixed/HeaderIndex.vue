@@ -8,7 +8,7 @@ import { useRoute } from "vue-router";
 const useLinkStyles = () => {
   return computed(() => {
     const baseStyles =
-      "text-gray-700 dark:text-gray-300 px-1 rounded-md transition-style";
+      "text-gray-700 dark:text-gray-300 px-1.5 py-0.5 rounded-sm transition-style";
     const hoverStyles =
       "hover:text-black dark:hover:text-white hover:bg-gray-200 dark:hover:bg-gray-700";
     return `${baseStyles} ${hoverStyles}`;
